@@ -1,0 +1,39 @@
+﻿using System;
+
+namespace TaskScheduler
+{
+    public class TaskInfo
+    {
+        public TaskInfo(string name, TaskStatus status, DateTime lastRunningOn, DateTime nextRunningOn, string taskCommandType, string taskCommandParameters)
+        {
+            TaskCommandParameters = taskCommandParameters;
+            TaskCommandType = taskCommandType;
+            NextRunningOn = nextRunningOn;
+            LastRunningOn = lastRunningOn;
+            Status = status;
+            Name = name;
+        }
+
+        public string Name { get; private set; }
+        public TaskStatus Status { get; private set; }
+        public DateTime LastRunningOn { get; private set; }
+        public DateTime NextRunningOn { get; private set; }
+        public string TaskCommandType { get; private set; }
+        public string TaskCommandParameters { get; private set; }
+
+        public void UpdateStatus(TaskStatus status)
+        {
+            Status = status;
+        }
+
+        public void UpdateLastRunningOn(DateTime lastRunningOn)
+        {
+            LastRunningOn = lastRunningOn;
+        }
+
+        public void UpdateNextRunningOn(DateTime nextRunningOn)
+        {
+            NextRunningOn = nextRunningOn;
+        }
+    }
+}
