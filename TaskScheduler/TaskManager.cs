@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Timers;
+using TaskScheduler.Operations;
 
 namespace TaskScheduler
 {
@@ -11,15 +13,16 @@ namespace TaskScheduler
         private readonly ITaskRepository _taskRepository;
         private readonly ITimeSpanEvaluator _timeSpanEvaluator;
         private readonly IDateTimeProvider _dateTimeProvider;
-
+        private readonly IOperationResolver _operationResolver;
         private readonly Timer _timer;
 
-        public TaskManager(IConfiguratinRepository configuratinRepository, ITaskRepository taskRepository, ITimeSpanEvaluator timeSpanEvaluator, IDateTimeProvider dateTimeProvider)
+        public TaskManager(IConfiguratinRepository configuratinRepository, ITaskRepository taskRepository, ITimeSpanEvaluator timeSpanEvaluator, IDateTimeProvider dateTimeProvider, IOperationResolver operationResolver)
         {
             _configuratinRepository = configuratinRepository;
             _taskRepository = taskRepository;
             _timeSpanEvaluator = timeSpanEvaluator;
             _dateTimeProvider = dateTimeProvider;
+            _operationResolver = operationResolver;
 
             _timer = new Timer(60000)
             {
@@ -31,20 +34,22 @@ namespace TaskScheduler
         private void ElapsedInterval(object sender, ElapsedEventArgs e)
         {
             var enabledTasks = _taskRepository.GetAllTask().Where(x => x.Status == TaskStatus.Enabled);
-            foreach (var enabledTask in enabledTasks)
+            Parallel.ForEach(enabledTasks, enabledTask =>
             {
                 if ((enabledTask.NextRunningOn - _dateTimeProvider.NowUtc) <= new TimeSpan(0, 1, 0))
                 {
+                    enabledTask.UpdateLastRunningOn(_dateTimeProvider.NowUtc);
+                    enabledTask.UpdateNextRunningOn(EvaluateNextRunningTime(enabledTask.Frequency));
                     runTask(enabledTask);
                 }
-            }
+            });
         }
 
         private void runTask(TaskInfo info)
         {
-            // resolve command type
-            // create instance with parameters
-            //if success update next execution time
+
+            var operation = _operationResolver.Resolve(info.TaskCommandType);
+            operation.Execute(info.TaskCommandParameters);
         }
 
         private void InitializeTasks()
@@ -73,7 +78,7 @@ namespace TaskScheduler
 
         private TaskInfo GenerateTaskFromConfiguration(TaskConfiguration cfg)
         {
-            return new TaskInfo(cfg.Name, TaskStatus.Enabled, DateTime.MinValue, new DateTime(), cfg.CommandType, cfg.CommandParameters );
+            return new TaskInfo(cfg.Name, TaskStatus.Enabled, DateTime.MinValue, new DateTime(), cfg.CommandType, cfg.CommandParameters, cfg.Frequency);
         }
 
         private void DisableAllTasks()

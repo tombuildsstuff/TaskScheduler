@@ -4,8 +4,9 @@ namespace TaskScheduler
 {
     public class TaskInfo
     {
-        public TaskInfo(string name, TaskStatus status, DateTime lastRunningOn, DateTime nextRunningOn, string taskCommandType, string taskCommandParameters)
+        public TaskInfo(string name, TaskStatus status, DateTime lastRunningOn, DateTime nextRunningOn, string taskCommandType, string taskCommandParameters, string frequency)
         {
+            Frequency = frequency;
             TaskCommandParameters = taskCommandParameters;
             TaskCommandType = taskCommandType;
             NextRunningOn = nextRunningOn;
@@ -20,6 +21,7 @@ namespace TaskScheduler
         public DateTime NextRunningOn { get; private set; }
         public string TaskCommandType { get; private set; }
         public string TaskCommandParameters { get; private set; }
+        public string Frequency { get; private set; }
 
         public void UpdateLastRunningOn(DateTime lastRunningOn)
         {
