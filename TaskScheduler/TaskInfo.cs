@@ -21,11 +21,6 @@ namespace TaskScheduler
         public string TaskCommandType { get; private set; }
         public string TaskCommandParameters { get; private set; }
 
-        public void UpdateStatus(TaskStatus status)
-        {
-            Status = status;
-        }
-
         public void UpdateLastRunningOn(DateTime lastRunningOn)
         {
             LastRunningOn = lastRunningOn;
@@ -34,6 +29,16 @@ namespace TaskScheduler
         public void UpdateNextRunningOn(DateTime nextRunningOn)
         {
             NextRunningOn = nextRunningOn;
+        }
+
+        public void Disable()
+        {
+            Status = TaskStatus.Disabled;
+        }
+
+        public void Enable()
+        {
+            Status = TaskStatus.Enabled;
         }
     }
 }
