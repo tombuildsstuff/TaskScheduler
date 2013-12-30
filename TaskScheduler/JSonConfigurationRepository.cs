@@ -3,11 +3,6 @@ using Newtonsoft.Json;
 
 namespace TaskScheduler
 {
-    public interface IConfiguratinRepository
-    {
-        IEnumerable<TaskConfiguration> GetConfigurations();
-    }
-
     public class JSonConfigurationRepository : IConfiguratinRepository
     {
         private readonly string _textConfiguration;
