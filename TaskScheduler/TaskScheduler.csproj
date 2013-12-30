@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="IConfiguratinRepository.cs" />
     <Compile Include="IDateTimeProvider.cs" />
+    <Compile Include="JSonConfigurationRepository.cs" />
     <Compile Include="Operations\IOperation.cs" />
     <Compile Include="ITaskManager.cs" />
     <Compile Include="ITaskRepository.cs" />

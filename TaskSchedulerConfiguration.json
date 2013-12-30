@@ -1,0 +1,13 @@
+[
+{ Name: "Summary Feed co uk",
+  CommandType: "PostOperation",
+  CommandParameters: "{ Url: 'http://www.internalapi.co.uk/', Timeout: 30 }",
+  Frequency: "21:09"
+ },
+ { Name: "Summary Feed com",
+  CommandType: "PostOperation",
+  CommandParameters: "{ Url: 'http://www.internalapi.com/', Timeout: 30 }",
+  Frequency: "21:11"
+ }
+
+]

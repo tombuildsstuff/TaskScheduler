@@ -42,5 +42,10 @@ namespace TaskScheduler
         {
             Status = TaskStatus.Enabled;
         }
+
+        public void UpdateFrequency(string frequency)
+        {
+            Frequency = frequency;
+        }
     }
 }

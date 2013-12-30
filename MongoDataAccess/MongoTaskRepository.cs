@@ -36,7 +36,7 @@ namespace MongoDataAccess
         {
             var collection = GetTaskCollection();
             var info = collection.FindOne(Query<TaskInfo>.EQ(x => x.Name, name));
-            return TaskInfoMapper(info);
+            return info == null ? null : TaskInfoMapper(info);
         }
 
         public IEnumerable<TaskInfo> GetAllTask()

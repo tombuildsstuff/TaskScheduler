@@ -170,6 +170,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\TaskSchedulerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -227,6 +228,7 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="TaskSchedulerConfiguration.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -239,6 +241,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MongoDataAccess\MongoDataAccess.csproj">
+      <Project>{45163408-ED51-43BE-A151-E6C123459A8B}</Project>
+      <Name>MongoDataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TaskScheduler\TaskScheduler.csproj">
       <Project>{cf75a3af-786e-41a9-bf1e-d0be183272d7}</Project>
       <Name>TaskScheduler</Name>

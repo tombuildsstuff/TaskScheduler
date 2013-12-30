@@ -63,11 +63,21 @@ namespace TaskScheduler
         {
             foreach (var cfg in configurations)
             {
-                var task = _taskRepository.GetTaskByName(cfg.Name) ?? GenerateTaskFromConfiguration(cfg);
-                var nextTimeRunning = EvaluateNextRunningTime(cfg.Frequency);
-                task.Enable();
-                task.UpdateNextRunningOn(nextTimeRunning);
-                _taskRepository.SaveTaskInfo(task);
+                var configurationTask = GenerateTaskFromConfiguration(cfg);
+                var task = _taskRepository.GetTaskByName(cfg.Name);
+                if (task == null)
+                {
+                    configurationTask.Enable();
+                    var nextTimeRunning = EvaluateNextRunningTime(cfg.Frequency);
+                    configurationTask.UpdateNextRunningOn(nextTimeRunning);
+
+                }
+                else
+                {
+                    configurationTask.UpdateLastRunningOn(task.LastRunningOn);
+                }
+                _taskRepository.SaveTaskInfo(configurationTask);
+              
             }
         }
 
