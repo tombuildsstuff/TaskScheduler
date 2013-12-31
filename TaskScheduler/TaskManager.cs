@@ -34,12 +34,14 @@ namespace TaskScheduler
         private void ElapsedInterval(object sender, ElapsedEventArgs e)
         {
             var enabledTasks = _taskRepository.GetAllTask().Where(x => x.Status == TaskStatus.Enabled);
+            var now = _dateTimeProvider.NowUtc;
             Parallel.ForEach(enabledTasks, enabledTask =>
             {
-                if ((enabledTask.NextRunningOn - _dateTimeProvider.NowUtc) <= new TimeSpan(0, 1, 0))
+                if (DateTime.Compare(enabledTask.NextRunningOn,now) == -1 && (enabledTask.NextRunningOn - now) <= new TimeSpan(0, 1, 0))
                 {
                     enabledTask.UpdateLastRunningOn(_dateTimeProvider.NowUtc);
                     enabledTask.UpdateNextRunningOn(EvaluateNextRunningTime(enabledTask.Frequency));
+                    _taskRepository.SaveTaskInfo(enabledTask);
                     runTask(enabledTask);
                 }
             });
@@ -68,14 +70,13 @@ namespace TaskScheduler
                 if (task == null)
                 {
                     configurationTask.Enable();
-                    var nextTimeRunning = EvaluateNextRunningTime(cfg.Frequency);
-                    configurationTask.UpdateNextRunningOn(nextTimeRunning);
-
                 }
                 else
                 {
                     configurationTask.UpdateLastRunningOn(task.LastRunningOn);
                 }
+                var nextTimeRunning = EvaluateNextRunningTime(cfg.Frequency);
+                configurationTask.UpdateNextRunningOn(nextTimeRunning);
                 _taskRepository.SaveTaskInfo(configurationTask);
               
             }

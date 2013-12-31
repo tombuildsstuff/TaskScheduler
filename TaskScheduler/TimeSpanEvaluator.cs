@@ -7,19 +7,19 @@ namespace TaskScheduler
     {
         public DateTime Evaluate(DateTime utcNow, string utcRunningTime)
         {
-            var regex = new Regex(@"(monthly on) (\d+)(.+) at (\d+):(\d+)", RegexOptions.IgnoreCase);
-            var result = regex.Match(utcRunningTime);
-
-            var nextEvent = result.Success
-                ? ParseMonthlyEvent(utcNow, result)
-                : ParseDailyEvent(utcNow, utcRunningTime);
-            return nextEvent;
+            var monthlyRegex = new Regex(@"(monthly on) (\d+)(.+) at (\d+):(\d+)", RegexOptions.IgnoreCase);
+            var result = monthlyRegex.Match(utcRunningTime);
+            if (result.Success) return ParseMonthlyEvent(utcNow, result);
+            var dailyRegex = new Regex(@"(daily at) (\d+):(\d+)", RegexOptions.IgnoreCase);
+            result = dailyRegex.Match(utcRunningTime);
+            return ParseDailyEvent(utcNow, result);
+      
         }
 
-        private static DateTime ParseDailyEvent(DateTime utcNow, string utcRunningTime)
+        private static DateTime ParseDailyEvent(DateTime utcNow, Match utcRunningTime)
         {
-            var hours = int.Parse(utcRunningTime.Split(':')[0]);
-            var minutes = int.Parse(utcRunningTime.Split(':')[1]);
+            var hours = int.Parse(utcRunningTime.Groups[2].Value);
+            var minutes = int.Parse(utcRunningTime.Groups[3].Value);
             var nextEvent = utcNow.Date.AddHours(hours).AddMinutes(minutes);
             if (nextEvent <= utcNow)
             {

@@ -1,0 +1,44 @@
+﻿body {
+}
+
+.TaskPanel {
+    
+}
+
+.task {
+    border: 1px solid #373636;
+    margin: 10px;
+}
+
+.Taskheader {
+    background-color: #373636;
+    color: #f0f8ff;
+    padding: 3px;
+  
+   
+}
+
+.tasktitle {
+   font-size: 22px;
+}
+
+.TaskOn {
+    background-color: #ff0000;
+    color: #f0f8ff;
+    width: 40px;
+    padding: 5px;
+    margin: 3px;
+    text-align: center;
+     float: right;
+}
+
+.TaskOff {
+    background-color: #000000;
+     color: #f0f8ff;
+      width: 40px;
+    padding: 5px;
+    margin: 3px;
+    text-align: center;
+      float: right;
+}
+
