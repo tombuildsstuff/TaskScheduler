@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace TaskScheduler.EventBus
+﻿namespace TaskScheduler.EventBus
 {
-    public class Bus
+    public class Bus : IBus
     {
         private readonly IEventHandlerFactory _eventFactory;
+        public IBus Instace { get; private set; }
 
-        public Bus(IEventHandlerFactory eventFactory)
+        private Bus(IEventHandlerFactory eventFactory)
         {
             _eventFactory = eventFactory;
         }
@@ -18,20 +14,10 @@ namespace TaskScheduler.EventBus
         {
             _eventFactory.GetInstanceOf<T>().Handle(@event);
         }
-    }
 
-    public interface IEvent
-    {
-        Guid Id { get; set; }
-    }
-
-    public interface IEventHandlerFactory
-    {
-        void RegisterInstance<T>(IEventHandler<T> instance) where T : IEvent;
-        IEventHandler<T> GetInstanceOf<T>() where T : IEvent;
-    }
-    public interface IEventHandler<in T> where T : IEvent
-    {
-        void Handle(T @event);
+        public void InitializeBus(IEventHandlerFactory eventHandlerFactory)
+        {
+            Instace = new Bus(eventHandlerFactory);
+        }
     }
 }

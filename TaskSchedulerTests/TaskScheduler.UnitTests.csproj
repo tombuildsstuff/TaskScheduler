@@ -7,8 +7,8 @@
     <ProjectGuid>{299ABF93-54A7-474F-8DC8-7CDABE9FE671}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TaskSchedulerTests</RootNamespace>
-    <AssemblyName>TaskSchedulerTests</AssemblyName>
+    <RootNamespace>TaskScheduler.UnitTests</RootNamespace>
+    <AssemblyName>TaskScheduler.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
