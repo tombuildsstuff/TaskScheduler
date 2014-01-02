@@ -41,13 +41,14 @@ namespace TaskScheduler
                 {
                     enabledTask.UpdateLastRunningOn(_dateTimeProvider.NowUtc);
                     enabledTask.UpdateNextRunningOn(EvaluateNextRunningTime(enabledTask.Frequency));
+                    enabledTask.UpdateResponseStatus(ResponseStatus.Unknown);
                     _taskRepository.SaveTaskInfo(enabledTask);
-                    runTask(enabledTask);
+                    RunTask(enabledTask);
                 }
             });
         }
 
-        private void runTask(TaskInfo info)
+        private void RunTask(TaskInfo info)
         {
 
             var operation = _operationResolver.Resolve(info.TaskCommandType);
@@ -67,13 +68,10 @@ namespace TaskScheduler
             {
                 var configurationTask = GenerateTaskFromConfiguration(cfg);
                 var task = _taskRepository.GetTaskByName(cfg.Name);
-                if (task == null)
-                {
-                    configurationTask.Enable();
-                }
-                else
+                if (task != null)
                 {
                     configurationTask.UpdateLastRunningOn(task.LastRunningOn);
+                    configurationTask.UpdateResponseStatus(task.ResponseStatus);
                 }
                 var nextTimeRunning = EvaluateNextRunningTime(cfg.Frequency);
                 configurationTask.UpdateNextRunningOn(nextTimeRunning);
@@ -89,7 +87,7 @@ namespace TaskScheduler
 
         private TaskInfo GenerateTaskFromConfiguration(TaskConfiguration cfg)
         {
-            return new TaskInfo(cfg.Name, TaskStatus.Enabled, DateTime.MinValue, new DateTime(), cfg.CommandType, cfg.CommandParameters, cfg.Frequency);
+            return new TaskInfo(cfg.Name, TaskStatus.Enabled, DateTime.MinValue, EvaluateNextRunningTime(cfg.Frequency), cfg.CommandType, cfg.CommandParameters, cfg.Frequency, ResponseStatus.Unknown);
         }
 
         private void DisableAllTasks()

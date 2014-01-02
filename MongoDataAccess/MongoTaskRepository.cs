@@ -21,6 +21,7 @@ namespace MongoDataAccess
             public string TaskCommandType { get; set; }
             public string TaskCommandParameters { get; set; }
             public string Frequency { get; set; }
+            public ResponseStatus ResponseStatus { get; set; }
         }
 
         private readonly string _mongoUrl;
@@ -59,7 +60,8 @@ namespace MongoDataAccess
                     NextRunningOn = task.NextRunningOn,
                     Status = task.Status,
                     TaskCommandParameters = task.TaskCommandParameters,
-                    TaskCommandType = task.TaskCommandType
+                    TaskCommandType = task.TaskCommandType,
+                    ResponseStatus = task.ResponseStatus
                 });
             }
             else
@@ -73,7 +75,8 @@ namespace MongoDataAccess
                     NextRunningOn = task.NextRunningOn,
                     Name = task.Name,
                     TaskCommandParameters = task.TaskCommandParameters,
-                    TaskCommandType = task.TaskCommandType
+                    TaskCommandType = task.TaskCommandType,
+                    ResponseStatus = task.ResponseStatus
                 });
             }
         }
@@ -81,7 +84,7 @@ namespace MongoDataAccess
         private static TaskInfo TaskInfoMapper(InternalTaskInfo info)
         {
             return new TaskInfo(info.Name, info.Status, info.LastRunningOn, info.NextRunningOn,
-                info.TaskCommandType, info.TaskCommandParameters, info.Frequency);
+                info.TaskCommandType, info.TaskCommandParameters, info.Frequency, info.ResponseStatus);
         }
 
         private MongoCollection<InternalTaskInfo> GetTaskCollection()

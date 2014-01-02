@@ -1,26 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Configuration;
+using System.Web.Http;
 using MongoDataAccess;
 using TaskScheduler.Services;
 
 namespace Frontend.Controllers
 {
-    public class HomeController : Controller
+    public class ResponseController : ApiController
     {
         private readonly ITaskMonitoringService _taskMonitoringService;
 
-        public HomeController()
+        public ResponseController()
         {
             _taskMonitoringService = new TaskMonitoringService(new MongoTaskRepository(ConfigurationManager.AppSettings["MongoUrl"]));
         }
 
-        public ActionResult Index()
+        public void Post([FromUri] string taskName, [FromUri] string taskStatus)
         {
-            return View(_taskMonitoringService.GetAllTasks());
+            _taskMonitoringService.UpdateTaskResponseStatus(taskName, taskStatus);
         }
     }
 }
