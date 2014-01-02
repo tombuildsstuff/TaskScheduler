@@ -16,11 +16,5 @@ logs/
 *ncrunch*
 .DS_Store
 .svn
-/Api/opentablejapan-ja_jp20130215070010.xml
-/Api/*.gz
-/Api/*.gz
-/Api/*.gz
-/Api/*.gz
-/Api/*.gz
-/Api/*.gz
-/Api/*.gz
+node_modules/
+buildOutput/
