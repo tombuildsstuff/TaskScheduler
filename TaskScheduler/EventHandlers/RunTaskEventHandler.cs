@@ -31,11 +31,18 @@ namespace TaskScheduler.EventHandlers
             task.UpdateNextRunningOn(_timeSpanEvaluator.Evaluate(_dateTimeProvider.NowUtc, task.Frequency));
             task.UpdateResponseStatus(ResponseStatus.Unknown);
             _taskRepository.SaveTaskInfo(task);
-            RunTask(task);
+            try
+            {
+                RunTask(task);
+            }
+            catch
+            {
+                task.UpdateResponseStatus(ResponseStatus.ConnectionFailed);
+                _taskRepository.SaveTaskInfo(task);
+            }
         }
         private void RunTask(TaskInfo info)
         {
-
             var operation = _operationResolver.Resolve(info.TaskCommandType);
             operation.Execute(info.TaskCommandParameters);
         }
