@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace TaskScheduler.EventBus
 {
-    public class InMemoryEventHandlerFactory : IEventHandlerFactory
+    public class EventHandlerFactory : IEventHandlerFactory
     {
         public static IDictionary<Type, Func<object>> Container;
 
-        static InMemoryEventHandlerFactory()
+        static EventHandlerFactory()
         {
             Container = new Dictionary<Type, Func<object>>();
         }

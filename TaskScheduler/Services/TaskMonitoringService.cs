@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using TaskScheduler.EventBus;
+using TaskScheduler.Events;
 
 namespace TaskScheduler.Services
 {
@@ -18,25 +21,13 @@ namespace TaskScheduler.Services
 
         public void UpdateTaskResponseStatus(string taskName, string taskStatus)
         {
-            var task = _repository.GetTaskByName(taskName);
-            if (task != null)
+            Bus.Instance.Publish(new UpdateTaskResponseStatusEvent
             {
-                task.UpdateResponseStatus(ConvertStringToStatus(taskStatus));
-                _repository.SaveTaskInfo(task);
-            }
-        }
-
-        private static ResponseStatus ConvertStringToStatus(string taskStatus)
-        {
-            switch (taskStatus.ToLower())
-            {
-                case "started":
-                    return ResponseStatus.Started;
-                case "finished":
-                    return ResponseStatus.Finished;
-                    default:
-                    return ResponseStatus.Unknown;
-            }
+                Id = Guid.NewGuid(),
+                TaskName = taskName,
+                TaskStatus = taskStatus
+            });
+            
         }
     }
 }

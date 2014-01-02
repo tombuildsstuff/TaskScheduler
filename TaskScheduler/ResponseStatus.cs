@@ -4,6 +4,8 @@
     {
         Unknown,
         Started,
-        Finished
+        Finished,
+        ConnectionFailed,
+        FailedToComplete
     }
 }

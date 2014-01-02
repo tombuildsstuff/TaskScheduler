@@ -44,6 +44,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventBus\Bus.cs" />
+    <Compile Include="EventBus\IBus.cs" />
+    <Compile Include="EventBus\IEvent.cs" />
+    <Compile Include="EventBus\IEventHandler.cs" />
+    <Compile Include="EventBus\IEventHandlerFactory.cs" />
+    <Compile Include="EventBus\EventHandlerFactory.cs" />
+    <Compile Include="EventHandlers\ElapsedTimeEventHandler.cs" />
+    <Compile Include="EventHandlers\InitializeTaskEventHandler.cs" />
+    <Compile Include="EventHandlers\InitializeTaskManagerEventHandler.cs" />
+    <Compile Include="EventHandlers\RunTaskEventHandler.cs" />
+    <Compile Include="EventHandlers\UpdateTaskResponseStatusEventHandler.cs" />
+    <Compile Include="Events\ElapsedTimeEvent.cs" />
+    <Compile Include="Events\InitializeTaskEvent.cs" />
+    <Compile Include="Events\InitializeTaskManagerEvent.cs" />
+    <Compile Include="Events\RunTaskEvent.cs" />
+    <Compile Include="Events\UpdateTaskResponseStatusEvent.cs" />
     <Compile Include="IConfiguratinRepository.cs" />
     <Compile Include="IDateTimeProvider.cs" />
     <Compile Include="JSonConfigurationRepository.cs" />

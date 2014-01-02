@@ -3,7 +3,7 @@
     public class Bus : IBus
     {
         private readonly IEventHandlerFactory _eventFactory;
-        public IBus Instace { get; private set; }
+        public static IBus Instance { get; private set; }
 
         private Bus(IEventHandlerFactory eventFactory)
         {
@@ -15,9 +15,9 @@
             _eventFactory.GetInstanceOf<T>().Handle(@event);
         }
 
-        public void InitializeBus(IEventHandlerFactory eventHandlerFactory)
+        public static void InitializeBus(IEventHandlerFactory eventHandlerFactory)
         {
-            Instace = new Bus(eventHandlerFactory);
+            Instance = new Bus(eventHandlerFactory);
         }
     }
 }
