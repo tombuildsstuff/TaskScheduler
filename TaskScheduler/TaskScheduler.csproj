@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventBus\Bus.cs" />
     <Compile Include="IConfiguratinRepository.cs" />
     <Compile Include="IDateTimeProvider.cs" />
     <Compile Include="JSonConfigurationRepository.cs" />
