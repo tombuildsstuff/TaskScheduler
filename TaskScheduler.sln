@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskScheduler", "TaskScheduler\TaskScheduler.csproj", "{CF75A3AF-786E-41A9-BF1E-D0BE183272D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskScheduler.UnitTests", "TaskSchedulerTests\TaskScheduler.UnitTests.csproj", "{299ABF93-54A7-474F-8DC8-7CDABE9FE671}"
@@ -17,22 +15,25 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CF75A3AF-786E-41A9-BF1E-D0BE183272D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF75A3AF-786E-41A9-BF1E-D0BE183272D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF75A3AF-786E-41A9-BF1E-D0BE183272D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF75A3AF-786E-41A9-BF1E-D0BE183272D7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{299ABF93-54A7-474F-8DC8-7CDABE9FE671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{299ABF93-54A7-474F-8DC8-7CDABE9FE671}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{299ABF93-54A7-474F-8DC8-7CDABE9FE671}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{299ABF93-54A7-474F-8DC8-7CDABE9FE671}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82817D01-9A52-4F8B-BAEA-C32ADA07D5C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82817D01-9A52-4F8B-BAEA-C32ADA07D5C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82817D01-9A52-4F8B-BAEA-C32ADA07D5C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82817D01-9A52-4F8B-BAEA-C32ADA07D5C1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{45163408-ED51-43BE-A151-E6C123459A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{45163408-ED51-43BE-A151-E6C123459A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45163408-ED51-43BE-A151-E6C123459A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45163408-ED51-43BE-A151-E6C123459A8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82817D01-9A52-4F8B-BAEA-C32ADA07D5C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82817D01-9A52-4F8B-BAEA-C32ADA07D5C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82817D01-9A52-4F8B-BAEA-C32ADA07D5C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82817D01-9A52-4F8B-BAEA-C32ADA07D5C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF75A3AF-786E-41A9-BF1E-D0BE183272D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF75A3AF-786E-41A9-BF1E-D0BE183272D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF75A3AF-786E-41A9-BF1E-D0BE183272D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF75A3AF-786E-41A9-BF1E-D0BE183272D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Frontend\Frontend.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

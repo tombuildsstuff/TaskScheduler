@@ -18,3 +18,4 @@ logs/
 .svn
 node_modules/
 buildOutput/
+*.userprefs
