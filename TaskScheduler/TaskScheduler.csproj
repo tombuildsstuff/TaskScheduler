@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BookSleeve">
+      <HintPath>..\packages\BookSleeve.1.3.41\lib\BookSleeve.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -52,11 +55,13 @@
     <Compile Include="EventBus\IEventHandlerFactory.cs" />
     <Compile Include="EventBus\EventHandlerFactory.cs" />
     <Compile Include="EventHandlers\ElapsedTimeEventHandler.cs" />
+    <Compile Include="EventHandlers\ExceptionRaisedEventHandler.cs" />
     <Compile Include="EventHandlers\InitializeTaskEventHandler.cs" />
     <Compile Include="EventHandlers\InitializeTaskManagerEventHandler.cs" />
     <Compile Include="EventHandlers\RunTaskEventHandler.cs" />
     <Compile Include="EventHandlers\UpdateTaskResponseStatusEventHandler.cs" />
     <Compile Include="Events\ElapsedTimeEvent.cs" />
+    <Compile Include="Events\ExceptionRaisedEvent.cs" />
     <Compile Include="Events\InitializeTaskEvent.cs" />
     <Compile Include="Events\InitializeTaskManagerEvent.cs" />
     <Compile Include="Events\RunTaskEvent.cs" />
@@ -64,6 +69,11 @@
     <Compile Include="IConfiguratinRepository.cs" />
     <Compile Include="IDateTimeProvider.cs" />
     <Compile Include="JSonConfigurationRepository.cs" />
+    <Compile Include="Logging\RedisLogger.cs" />
+    <Compile Include="Logging\Redis\IRedisConnectionFactory.cs" />
+    <Compile Include="Logging\Redis\RedisConnectionFactory.cs" />
+    <Compile Include="Logging\Redis\IRedisConnectionWrapper.cs" />
+    <Compile Include="Logging\Redis\RedisConnectionWrapper.cs" />
     <Compile Include="Operations\IOperation.cs" />
     <Compile Include="ITaskManager.cs" />
     <Compile Include="ITaskRepository.cs" />

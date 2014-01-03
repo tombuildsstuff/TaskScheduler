@@ -1,4 +1,6 @@
-﻿namespace TaskScheduler.EventBus
+﻿using System.Threading.Tasks;
+
+namespace TaskScheduler.EventBus
 {
     public class Bus : IBus
     {
@@ -12,7 +14,7 @@
 
         public void Publish<T>(T @event) where T : IEvent
         {
-            _eventFactory.GetInstanceOf<T>().Handle(@event);
+            Task.Factory.StartNew(() => _eventFactory.GetInstanceOf<T>().Handle(@event));
         }
 
         public static void InitializeBus(IEventHandlerFactory eventHandlerFactory)
