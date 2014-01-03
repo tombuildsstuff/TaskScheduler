@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TaskScheduler.EventBus;
+﻿using TaskScheduler.EventBus;
 using TaskScheduler.Events;
 using TaskScheduler.Operations;
 
