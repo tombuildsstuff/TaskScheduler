@@ -36,6 +36,9 @@
     <Reference Include="BookSleeve">
       <HintPath>..\packages\BookSleeve.1.3.41\lib\BookSleeve.dll</HintPath>
     </Reference>
+    <Reference Include="EventStore.ClientAPI">
+      <HintPath>..\packages\EventStore.Client.2.0.2\lib\net40\EventStore.ClientAPI.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -49,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventBus\Bus.cs" />
+    <Compile Include="EventBus\EventStore\EventStoreRepository.cs" />
+    <Compile Include="EventBus\EventStore\IEventStoreRepository.cs" />
     <Compile Include="EventBus\IBus.cs" />
     <Compile Include="EventBus\IEvent.cs" />
     <Compile Include="EventBus\IEventHandler.cs" />

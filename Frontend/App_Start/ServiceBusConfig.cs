@@ -5,6 +5,7 @@ using System.Threading;
 using MongoDataAccess;
 using TaskScheduler;
 using TaskScheduler.EventBus;
+using TaskScheduler.EventBus.EventStore;
 using TaskScheduler.EventHandlers;
 using TaskScheduler.Events;
 using TaskScheduler.Logging;
@@ -29,7 +30,7 @@ namespace Frontend
             eventHandler.RegisterInstance(() => new InitializeTaskEventHandler(new TimeSpanEvaluator(), new StandardDateTimeProvider(), mongoTaskRepository));
             eventHandler.RegisterInstance(() => new InitializeTaskManagerEventHandler(new JSonConfigurationRepository(config), mongoTaskRepository));
             eventHandler.RegisterInstance(() => new ExceptionRaisedEventHandler(new RedisLogger<LogstashLog>(new RedisConnectionFactory(new RedisConnectionWrapper(), "10.10.20.68", 6379, 3))));
-            Bus.InitializeBus(eventHandler);
+            Bus.InitializeBus(eventHandler, new EventStoreRepository());
         }
     }
 }
