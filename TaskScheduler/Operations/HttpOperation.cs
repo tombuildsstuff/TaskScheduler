@@ -8,7 +8,7 @@ namespace TaskScheduler.Operations
 {
     public class HttpOperation : IOperation
     {
-        private class PostParameters
+        private class HttpParameters
         {
             public string Url { get; set; }
             public int Timeout { get; set; }
@@ -18,7 +18,7 @@ namespace TaskScheduler.Operations
 
         public void Execute(string parameters)
         {
-            var deserializedParameters = JsonConvert.DeserializeObject<PostParameters>(parameters);
+            var deserializedParameters = JsonConvert.DeserializeObject<HttpParameters>(parameters);
             var client = WebRequest.Create(deserializedParameters.Url);
             
             var buf = string.IsNullOrEmpty(deserializedParameters.Body) ? new byte[0] : Encoding.UTF8.GetBytes(deserializedParameters.Body);
