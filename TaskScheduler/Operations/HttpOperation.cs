@@ -6,13 +6,14 @@ using Newtonsoft.Json;
 
 namespace TaskScheduler.Operations
 {
-    public class PostOperation : IOperation
+    public class HttpOperation : IOperation
     {
         private class PostParameters
         {
             public string Url { get; set; }
             public int Timeout { get; set; }
             public string Body { get; set; }
+            public string Verb { get; set; }
         }
 
         public void Execute(string parameters)
@@ -22,7 +23,7 @@ namespace TaskScheduler.Operations
             
             var buf = string.IsNullOrEmpty(deserializedParameters.Body) ? new byte[0] : Encoding.UTF8.GetBytes(deserializedParameters.Body);
 
-            client.Method = "POST";
+            client.Method = deserializedParameters.Verb;
             client.ContentType = "text/json";
             client.ContentLength = buf.Length;
             client.GetRequestStream().Write(buf, 0, buf.Length);

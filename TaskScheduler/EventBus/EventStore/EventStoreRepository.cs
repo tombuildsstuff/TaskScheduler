@@ -22,6 +22,6 @@ namespace TaskScheduler.EventBus.EventStore
                     new UserCredentials("admin", "changeit"), new EventData(@event.Id, @event.GetType().Name, true, data, metadata) );
             } 
         }
-
+        
     }
 }
