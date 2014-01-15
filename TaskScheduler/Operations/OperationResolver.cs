@@ -10,7 +10,7 @@ namespace TaskScheduler.Operations
         {
             _operationList = new Dictionary<string, IOperation>()
             {
-                {"PostOperation", new PostOperation()}
+                {"PostOperation", new HttpOperation()}
             };
         }
             

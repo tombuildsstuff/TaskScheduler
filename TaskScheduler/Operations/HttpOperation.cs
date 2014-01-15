@@ -31,12 +31,4 @@ namespace TaskScheduler.Operations
             client.GetResponse();
         }
     }
-
-    public class ServiceBusOperation : IOperation
-    {
-        public void Execute(string parameters)
-        {
-            throw new NotImplementedException();
-        }
-    }
 }
