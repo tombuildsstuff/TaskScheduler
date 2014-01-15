@@ -12,8 +12,18 @@ namespace TaskScheduler
             if (result.Success) return ParseMonthlyEvent(utcNow, result);
             var dailyRegex = new Regex(@"(daily at) (\d+):(\d+)", RegexOptions.IgnoreCase);
             result = dailyRegex.Match(utcRunningTime);
-            return ParseDailyEvent(utcNow, result);
-      
+            if (result.Success) return ParseDailyEvent(utcNow, result);
+            var everyRegex = new Regex(@"(every) (\d+) (minutes?|hours?)", RegexOptions.IgnoreCase);
+            result = everyRegex.Match(utcRunningTime);
+            return ParseEveryEvent(utcNow, result);
+        }
+
+        private static DateTime ParseEveryEvent(DateTime utcNow, Match result)
+        {
+            var parsedValue = int.Parse(result.Groups[2].Value);
+            return result.Groups[3].Value.Contains("minute") 
+                ? utcNow.AddMinutes(parsedValue) 
+                : utcNow.AddHours(parsedValue);
         }
 
         private static DateTime ParseDailyEvent(DateTime utcNow, Match utcRunningTime)

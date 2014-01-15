@@ -33,7 +33,8 @@ module.exports = function(grunt) {
     grunt.registerTask('build', ['clean:build', 'xbuild:build', 'copy:buildOutput']);
     grunt.registerTask('unitTest', ['watch-unitTests', 'exec:runUnitTests']);
     grunt.registerTask('integrationTest', ['watch-integrationTests', 'exec:runIntegrationTests']);
-    grunt.registerTask('test', ['unitTest', 'integrationTest']);
+    // grunt.registerTask('test', ['unitTest', 'integrationTest']);
+    grunt.registerTask('test', ['unitTest']);
 
     // Deployment task
     grunt.registerTask('deploy', [

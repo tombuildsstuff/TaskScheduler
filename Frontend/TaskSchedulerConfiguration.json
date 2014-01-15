@@ -3,5 +3,10 @@
   CommandType: "HttpOperation",
   CommandParameters: "{ Url: 'http://www.internalapi.co.uk/', Timeout: 3000, Verb: 'POST' }",
   Frequency: "daily at 21:31"
+ },
+ { Name: "Summary Feed co uk every 2 minutes",
+  CommandType: "HttpOperation",
+  CommandParameters: "{ Url: 'http://www.internalapi.co.uk/', Timeout: 3000, Verb: 'POST' }",
+  Frequency: "every 2 minutes"
  }
 ]
