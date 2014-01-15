@@ -1,6 +1,6 @@
 [
 { Name: "Summary Feed co uk",
-  CommandType: "PostOperation",
+  CommandType: "HttpOperation",
   CommandParameters: "{ Url: 'http://www.internalapi.co.uk/', Timeout: 3000, Verb: 'POST' }",
   Frequency: "daily at 21:31"
  }
