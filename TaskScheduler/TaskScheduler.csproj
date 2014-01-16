@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventBus\Bus.cs" />
+    <Compile Include="EventBus\EventStore\EventStoreConfiguration.cs" />
     <Compile Include="EventBus\EventStore\EventStoreRepository.cs" />
+    <Compile Include="EventBus\EventStore\IEventStoreConfiguration.cs" />
     <Compile Include="EventBus\EventStore\IEventStoreRepository.cs" />
     <Compile Include="EventBus\IBus.cs" />
     <Compile Include="EventBus\IEvent.cs" />

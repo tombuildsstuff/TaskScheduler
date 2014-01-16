@@ -23,6 +23,10 @@ namespace Frontend
             var config = File.OpenText(fileName).ReadToEnd();
             var mongourl = ConfigurationManager.AppSettings["MongoUrl"];
             var mongoTaskRepository = new MongoTaskRepository(mongourl);
+            var eventStoreIp = ConfigurationManager.AppSettings["EventStoreIp"];
+            var eventStorePort = int.Parse(ConfigurationManager.AppSettings["EventStoreTcpPort"]);
+            var eventStoreUserName = ConfigurationManager.AppSettings["EventStoreUserName"];
+            var eventStorePassword = ConfigurationManager.AppSettings["EventStorePassword"];
             eventHandler.RegisterInstance(() => new UpdateTaskResponseStatusEventHandler(mongoTaskRepository));
             eventHandler.RegisterInstance(() => new RunTaskEventHandler(new StandardDateTimeProvider(), mongoTaskRepository, new TimeSpanEvaluator(),
                 new OperationResolver()));
@@ -30,7 +34,7 @@ namespace Frontend
             eventHandler.RegisterInstance(() => new InitializeTaskEventHandler(new TimeSpanEvaluator(), new StandardDateTimeProvider(), mongoTaskRepository));
             eventHandler.RegisterInstance(() => new InitializeTaskManagerEventHandler(new JSonConfigurationRepository(config), mongoTaskRepository));
             eventHandler.RegisterInstance(() => new ExceptionRaisedEventHandler(new RedisLogger<LogstashLog>(new RedisConnectionFactory(new RedisConnectionWrapper(), "10.10.20.68", 6379, 3))));
-            Bus.InitializeBus(eventHandler, new EventStoreRepository());
+            Bus.InitializeBus(eventHandler, new EventStoreRepository(new EventStoreConfiguration(eventStoreIp,eventStorePort,eventStoreUserName,eventStorePassword)));
         }
     }
 }

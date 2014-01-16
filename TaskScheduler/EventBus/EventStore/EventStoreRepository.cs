@@ -11,15 +11,22 @@ namespace TaskScheduler.EventBus.EventStore
 {
     public class EventStoreRepository : IEventStoreRepository
     {
+        private readonly IEventStoreConfiguration _config;
+
+        public EventStoreRepository(IEventStoreConfiguration config)
+        {
+            _config = config;
+        }
+
         public void PublishEvent(IEvent @event)
         {
-            using (var connection = EventStoreConnection.Create(new IPEndPoint(IPAddress.Loopback, 1113)))
+            using (var connection = EventStoreConnection.Create(new IPEndPoint(IPAddress.Parse(_config.IpAddress), _config.Port)))
             {
                 connection.Connect();
-                var data = Json.ToJsonBytes(@event);
+                var data = @event.ToJsonBytes();
                 var metadata = new byte[0];
-                connection.AppendToStreamAsync("TaskScheduler", ExpectedVersion.Any,
-                    new UserCredentials("admin", "changeit"), new EventData(@event.Id, @event.GetType().Name, true, data, metadata) );
+                connection.AppendToStream("TaskScheduler", ExpectedVersion.Any,
+                    new UserCredentials(_config.UserName, _config.Password), new EventData(@event.Id, @event.GetType().Name, true, data, metadata) );
             } 
         }
         
