@@ -18,7 +18,8 @@ namespace TaskScheduler.EventBus
 
         public void Publish<T>(T @event) where T : IEvent
         {
-            _eventStoreRepository.PublishEvent(@event);
+            if (_eventStoreRepository != null)
+                _eventStoreRepository.PublishEvent(@event);
             Task.Factory.StartNew(() => _eventFactory.GetInstanceOf<T>().Handle(@event));
 
         }
