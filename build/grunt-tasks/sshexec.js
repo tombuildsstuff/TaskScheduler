@@ -10,7 +10,7 @@ var sshconfig = "grunt.config(['sshconfig', " + config + "])";
 var current = "<%= " + sshconfig + ".path %>";
 var symlink = "<%= " + sshconfig + ".path.rtrim() %>";
 var release = "<%= " + sshconfig + ".releases + (grunt.option('buildNumber') || '" + dateString + "') %>";
-var configFiles = current + "Configuration/com/<%= grunt.option('config') %>/*.config";
+var configFiles = current + "Configuration/<%= grunt.option('config') %>/*.config";
 var logs = current + "logs/";
 var lbstatus = "<%= " + sshconfig + ".lbstatus %>";
 
