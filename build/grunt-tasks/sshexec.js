@@ -16,10 +16,10 @@ var lbstatus = "<%= " + sshconfig + ".lbstatus %>";
 
 var task = {
     start: {
-        command: "/etc/init.d/TaskScheduler start"
+        command: "/etc/init.d/taskscheduler start"
     },
     stop: {
-        command: "/etc/init.d/TaskScheduler stop",
+        command: "/etc/init.d/taskscheduler stop",
         options: {
             ignoreErrors: true
         }
