@@ -8,7 +8,7 @@ var task = {
     },
     artifacts: {
         files: [
-            { src: ['buildOutput/TaskScheduler/**/*'] }
+            { src: ['buildOutput/Frontend/**/*'] }
         ],
         options: {
             publish: [{
