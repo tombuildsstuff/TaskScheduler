@@ -9,7 +9,7 @@ var task = {
         lbstatus: '/etc/lbstatus/taskscheduler',
         httpPort: 3000
     },
-    'qa-test': {
+    'CI': {
         host: "<%= grunt.option('server') %>",
         port: "<%= (grunt.option('port') || 22) %>",
         username: "<%= grunt.option('username') %>",
