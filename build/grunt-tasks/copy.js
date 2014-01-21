@@ -12,9 +12,9 @@ var task = {
         files: [
             {
                 expand: true,
-                cwd: "buildOutput/TaskScheduler",
+                cwd: "buildOutput/Frontend",
                 src: ["**"],
-                dest: "temp/buildOutput/TaskScheduler"
+                dest: "temp/buildOutput/Frontend"
             }
         ]
     }
