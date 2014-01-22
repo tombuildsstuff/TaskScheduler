@@ -12,11 +12,11 @@ var task = {
         ],
         options: {
             publish: [{
-                id: 'web:TaskScheduler:zip',
+                id: 'web:TaskScheduler:tgz',
                 path: 'buildOutput/'
             }],
             fetch: [{
-                id: 'web:TaskScheduler:zip',
+                id: 'web:TaskScheduler:tgz',
                 path: 'temp'
             }]
         }
