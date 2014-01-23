@@ -1,10 +1,10 @@
 var task = {
     deploy: {
         files: {
-            "./": "temp/buildOutput/TaskScheduler/**"
+            "./": "temp/buildOutput/Frontend/**"
         },
         options: {
-            srcBasePath: "temp/buildOutput/TaskScheduler/",
+            srcBasePath: "temp/buildOutput/Frontend/",
             createDirectories: true
         }
     },
