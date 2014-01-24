@@ -23,7 +23,7 @@ namespace Frontend
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             ServiceBusConfig.Initialize();
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
+          //  WebApiConfig.Register(GlobalConfiguration.Configuration);
             TaskSchedulerConfig.Start();
         }
     }
