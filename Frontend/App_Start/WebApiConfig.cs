@@ -13,11 +13,8 @@ namespace Frontend
 
             // Web API routes
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            config.Routes.MapHttpRoute("apiendpoint",
+                routeTemplate: "api/{controller}");
         }
     }
 }
