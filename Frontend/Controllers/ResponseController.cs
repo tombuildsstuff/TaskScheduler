@@ -1,7 +1,5 @@
 ﻿using System.Configuration;
 using System.IO;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using MongoDataAccess;
 using TaskScheduler.Services;
@@ -26,7 +24,7 @@ namespace Frontend.Controllers
 
     public class LoadBalancerStatusController : ApiController
     {
-        public HttpResponseMessage Get()
+        public string Get()
         {
             try
             {
@@ -35,18 +33,12 @@ namespace Frontend.Controllers
                         FileAccess.Read, FileShare.ReadWrite))
                 using (var reader = new StreamReader(file))
                 {
-                    return new HttpResponseMessage(HttpStatusCode.OK)
-                    {
-                        Content = new StringContent(reader.ReadToEnd())
-                    };
-                }
+                    return reader.ReadToEnd();
+                };
             }
             catch (IOException)
             {
-                return new HttpResponseMessage(HttpStatusCode.OK)
-                {
-                    Content = new StringContent("OTWEB_OFF")
-                };
+                return "OTWEB_OFF";
             }
         }
     }
