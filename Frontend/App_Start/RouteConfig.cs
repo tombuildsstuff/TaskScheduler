@@ -12,7 +12,7 @@ namespace Frontend
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            RouteTable.Routes.MapHttpRoute("LBStatus", "_lbstatus", new { controller = "LoadBalancerStatus" });
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
