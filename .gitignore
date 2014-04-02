@@ -16,7 +16,6 @@ logs/
 *ncrunch*
 .DS_Store
 .svn
-node_modules/
 buildOutput/
 *.userprefs
 UnitTestsResult.xml
