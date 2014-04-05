@@ -98,7 +98,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\ServiceBusConfig.cs" />
     <Compile Include="App_Start\TaskSchedulerConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResponseController.cs" />
     <Compile Include="Global.asax.cs">
