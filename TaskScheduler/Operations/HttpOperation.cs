@@ -24,7 +24,7 @@ namespace TaskScheduler.Operations
             var buf = string.IsNullOrEmpty(deserializedParameters.Body) ? new byte[0] : Encoding.UTF8.GetBytes(deserializedParameters.Body);
 
             client.Method = deserializedParameters.Verb;
-            client.ContentType = "text/json";
+            client.ContentType = "application/json";
             client.ContentLength = buf.Length;
             client.GetRequestStream().Write(buf, 0, buf.Length);
             client.Timeout = deserializedParameters.Timeout;
