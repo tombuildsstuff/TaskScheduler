@@ -11,7 +11,6 @@ namespace TaskScheduler.Operations
         private class HttpParameters
         {
             public string Url { get; set; }
-            public int Timeout { get; set; }
             public string Body { get; set; }
             public string Verb { get; set; }
         }
@@ -27,7 +26,7 @@ namespace TaskScheduler.Operations
             client.ContentType = "application/json";
             client.ContentLength = buf.Length;
             client.GetRequestStream().Write(buf, 0, buf.Length);
-            client.Timeout = deserializedParameters.Timeout;
+            client.Timeout = 10000;
             client.GetResponse();
         }
     }
