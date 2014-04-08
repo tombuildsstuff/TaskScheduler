@@ -13,7 +13,6 @@ namespace TaskScheduler.Operations
         private class HttpParameters
         {
             public string Url { get; set; }
-            public string Body { get; set; }
             public string Verb { get; set; }
         }
 
@@ -31,13 +30,11 @@ namespace TaskScheduler.Operations
                 Id = Guid.NewGuid()
             });
             var client = WebRequest.Create(deserializedParameters.Url);
-            
-            var buf = string.IsNullOrEmpty(deserializedParameters.Body) ? new byte[0] : Encoding.UTF8.GetBytes(deserializedParameters.Body);
 
             client.Method = deserializedParameters.Verb;
             client.ContentType = "application/json";
-            client.ContentLength = buf.Length;
-            client.GetRequestStream().Write(buf, 0, buf.Length);
+            client.ContentLength = 0;
+
             client.Timeout = 10000;
             client.GetResponse();
         }
