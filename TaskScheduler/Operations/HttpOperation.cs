@@ -19,24 +19,9 @@ namespace TaskScheduler.Operations
         public void Execute(string parameters)
         {
             var deserializedParameters = JsonConvert.DeserializeObject<HttpParameters>(parameters);
-            Bus.Instance.Publish(new  ErrorThrownEvent
-            {
-                Exception = new Exception(parameters), 
-                Id = Guid.NewGuid()
-            });
-              Bus.Instance.Publish(new  ErrorThrownEvent
-            {
-                Exception = new Exception(deserializedParameters.Url), 
-                Id = Guid.NewGuid()
-            });
-            var client = WebRequest.Create(deserializedParameters.Url);
-
-            client.Method = deserializedParameters.Verb;
-            client.ContentType = "application/json";
-            client.ContentLength = 0;
-
-            client.Timeout = 10000;
-            client.GetResponse();
+            var client = new WebClient();
+            client.Headers[HttpRequestHeader.ContentType] = "application/json";
+            client.UploadString(deserializedParameters.Url, "");
         }
     }
 }
