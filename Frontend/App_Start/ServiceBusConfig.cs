@@ -38,6 +38,7 @@ namespace Frontend
             eventHandler.RegisterInstance(() => new InitializeTaskEventHandler(new TimeSpanEvaluator(), new StandardDateTimeProvider(), mongoTaskRepository));
             eventHandler.RegisterInstance(() => new InitializeTaskManagerEventHandler(new JSonConfigurationRepository(config), mongoTaskRepository));
             eventHandler.RegisterInstance(() => new ExceptionRaisedEventHandler(new RedisLogger<LogstashLog>(new RedisConnectionFactory(new RedisConnectionWrapper(), redisIp, redisPort, redisMaxRetries))));
+            eventHandler.RegisterInstance(() => new ErrorThrownEventHandler(new MongoErrorLogRepository(mongourl)));
             Bus.InitializeBus(eventHandler, useEventStore 
                 ? new EventStoreRepository(new EventStoreConfiguration(eventStoreIp,eventStorePort,eventStoreUserName,eventStorePassword))
                 : null);

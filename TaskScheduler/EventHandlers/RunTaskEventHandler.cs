@@ -1,4 +1,5 @@
-﻿using TaskScheduler.EventBus;
+﻿using System;
+using TaskScheduler.EventBus;
 using TaskScheduler.Events;
 using TaskScheduler.Operations;
 
@@ -31,9 +32,10 @@ namespace TaskScheduler.EventHandlers
             {
                 RunTask(task);
             }
-            catch
+            catch(Exception ex)
             {
                 task.UpdateResponseStatus(ResponseStatus.ConnectionFailed);
+                Bus.Instance.Publish(new ErrorThrownEvent() {Exception = ex, Id = Guid.NewGuid()});
                 _taskRepository.SaveTaskInfo(task);
             }
         }

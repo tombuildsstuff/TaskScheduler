@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ErrorEntry.cs" />
     <Compile Include="EventBus\Bus.cs" />
     <Compile Include="EventBus\EventStore\EventStoreConfiguration.cs" />
     <Compile Include="EventBus\EventStore\EventStoreRepository.cs" />
@@ -62,12 +63,14 @@
     <Compile Include="EventBus\IEventHandlerFactory.cs" />
     <Compile Include="EventBus\EventHandlerFactory.cs" />
     <Compile Include="EventHandlers\ElapsedTimeEventHandler.cs" />
+    <Compile Include="EventHandlers\ErrorThrownEventHandler.cs" />
     <Compile Include="EventHandlers\ExceptionRaisedEventHandler.cs" />
     <Compile Include="EventHandlers\InitializeTaskEventHandler.cs" />
     <Compile Include="EventHandlers\InitializeTaskManagerEventHandler.cs" />
     <Compile Include="EventHandlers\RunTaskEventHandler.cs" />
     <Compile Include="EventHandlers\UpdateTaskResponseStatusEventHandler.cs" />
     <Compile Include="Events\ElapsedTimeEvent.cs" />
+    <Compile Include="Events\ErrorThrownEvent.cs" />
     <Compile Include="Events\ExceptionRaisedEvent.cs" />
     <Compile Include="Events\InitializeTaskEvent.cs" />
     <Compile Include="Events\InitializeTaskManagerEvent.cs" />
@@ -75,6 +78,7 @@
     <Compile Include="Events\UpdateTaskResponseStatusEvent.cs" />
     <Compile Include="IConfiguratinRepository.cs" />
     <Compile Include="IDateTimeProvider.cs" />
+    <Compile Include="IErrorLogRepository.cs" />
     <Compile Include="JSonConfigurationRepository.cs" />
     <Compile Include="Logging\RedisLogger.cs" />
     <Compile Include="Logging\Redis\IRedisConnectionFactory.cs" />
