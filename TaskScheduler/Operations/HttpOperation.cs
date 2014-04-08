@@ -3,6 +3,8 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using Newtonsoft.Json;
+using TaskScheduler.EventBus;
+using TaskScheduler.Events;
 
 namespace TaskScheduler.Operations
 {
@@ -18,6 +20,16 @@ namespace TaskScheduler.Operations
         public void Execute(string parameters)
         {
             var deserializedParameters = JsonConvert.DeserializeObject<HttpParameters>(parameters);
+            Bus.Instance.Publish(new  ErrorThrownEvent
+            {
+                Exception = new Exception(parameters), 
+                Id = Guid.NewGuid()
+            });
+              Bus.Instance.Publish(new  ErrorThrownEvent
+            {
+                Exception = new Exception(deserializedParameters.Url), 
+                Id = Guid.NewGuid()
+            });
             var client = WebRequest.Create(deserializedParameters.Url);
             
             var buf = string.IsNullOrEmpty(deserializedParameters.Body) ? new byte[0] : Encoding.UTF8.GetBytes(deserializedParameters.Body);
