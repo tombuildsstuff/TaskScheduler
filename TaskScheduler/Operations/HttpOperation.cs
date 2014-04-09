@@ -20,7 +20,7 @@ namespace TaskScheduler.Operations
         {
             var deserializedParameters = JsonConvert.DeserializeObject<HttpParameters>(parameters);
             var client = new WebClient();
-            client.Proxy = new WebProxy("192.168.220.249", 3128);
+           // client.Proxy = new WebProxy("192.168.220.249", 3128)
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.UploadString(deserializedParameters.Url, "POST", "");
         }
