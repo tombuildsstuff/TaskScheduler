@@ -106,6 +106,7 @@
     <Content Include="Configuration\pre-prod\AppSettings.config" />
     <Content Include="Configuration\production\AppSettings.config" />
     <Content Include="Configuration\production\TaskSchedulerConfiguration.json" />
+    <Content Include="Configuration\pre-prod\TaskSchedulerConfiguration.json" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

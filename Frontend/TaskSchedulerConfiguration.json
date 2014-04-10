@@ -1,7 +1,7 @@
 [
-{ Name: "Review Submission to BV",
+{ Name: "No TASK running here",
   CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=SubmissionReviewsTask&domains=co_uk', Verb: 'POST' }",
-  Frequency: "every 2 minutes"
- }
+  CommandParameters: "{ Url: 'http://127.0.0.1', Verb: 'POST' }",
+  Frequency: "every 60 minutes"
+  }
 ]
