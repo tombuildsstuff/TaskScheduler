@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -22,7 +23,6 @@ namespace TaskScheduler.Operations
             var client = WebRequest.Create(deserializedParameters.Url);
             client.Method = "POST";
             //client.Proxy = new WebProxy("192.168.220.249", 3128);
-            client.Headers[HttpRequestHeader.ContentType] = "application/json";
             client.GetResponse();
         }
     }
