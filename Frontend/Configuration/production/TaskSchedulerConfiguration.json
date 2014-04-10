@@ -1,22 +1,22 @@
 [
 { Name: "Review Submission to BV",
   CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-api-ln.otenv.com/manualtaskexecution?taskName=SubmissionReviewsTask&domains=co_uk', Verb: 'POST' }",
+  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=SubmissionReviewsTask&domains=co_uk', Verb: 'POST' }",
   Frequency: "every 60 minutes"
  },
  { Name: "Standard client feed CO UK and DE",
   CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-api-ln.otenv.com/manualtaskexecution?taskName=ClientFeedTask&domains=co_uk,de', Verb: 'POST' }",
+  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=ClientFeedTask&domains=co_uk,de', Verb: 'POST' }",
   Frequency: "daily at 01:00"
  },
   { Name: "Standard client feed COM and JP",
   CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-api-ln.otenv.com/manualtaskexecution?taskName=ClientFeedTask&domains=com,jp', Verb: 'POST' }",
+  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=ClientFeedTask&domains=com,jp', Verb: 'POST' }",
   Frequency: "daily at 06:00"
  },
    { Name: "Reviewer importer",
   CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-api-ln.otenv.com/manualtaskexecution?taskName=NicknameSyncTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
+  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=NicknameSyncTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
   Frequency: "every 60 minutes"
  }
 ]
