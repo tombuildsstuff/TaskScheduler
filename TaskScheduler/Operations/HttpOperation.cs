@@ -22,7 +22,7 @@ namespace TaskScheduler.Operations
             var client = new WebClient();
             client.Proxy = new WebProxy("192.168.220.249", 3128);
             client.Headers[HttpRequestHeader.ContentType] = "application/json";
-            client.UploadString(deserializedParameters.Url, "POST", "");
+            client.UploadString(deserializedParameters.Url, "POST", "{}");
         }
     }
 }
