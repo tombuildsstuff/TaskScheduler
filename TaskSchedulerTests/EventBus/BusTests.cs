@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using TaskScheduler.EventBus;
 using TaskScheduler.Events;
@@ -15,13 +16,14 @@ namespace TaskScheduler.UnitTests.EventBus
         [TestFixtureSetUp]
         public void Setup()
         {
+            var faultyElapsedTimeHandler = new FaultyElapsedTimeHandler();
             var eventHandler = new EventHandlerFactory();
             _handler.ResetTest();
-            eventHandler.RegisterInstance(() => new FaultyElapsedTimeHandler());
+            eventHandler.RegisterInstance(() => faultyElapsedTimeHandler);
             eventHandler.RegisterInstance(() => _handler);
             Bus.InitializeBus(eventHandler, null);
             Bus.Instance.Publish(new ElapsedTimeEvent());
-            Thread.Sleep(20);
+            Task.WaitAll(new [] { faultyElapsedTimeHandler.Task, _handler.Task}, 1000);
         }
 
         [Test]
@@ -36,14 +38,26 @@ namespace TaskScheduler.UnitTests.EventBus
     {
         public class FaultyElapsedTimeHandler : IEventHandler<ElapsedTimeEvent>
         {
+            private TaskCompletionSource<bool> _tcSource = new TaskCompletionSource<bool>();
+            public Task Task 
+            {
+                get { return _tcSource.Task; }
+            }
+
             public void Handle(ElapsedTimeEvent @event)
             {
+                _tcSource.SetResult(true);
                 throw new Exception();
             }
         }
 
         public class ErrorThrownTestHandler : IEventHandler<ErrorThrownEvent>
         {
+            private TaskCompletionSource<bool> _tcSource = new TaskCompletionSource<bool>();
+            public Task Task
+            {
+                get { return _tcSource.Task; }
+            }
             public void ResetTest()
             {
                 WasCalled = false;
@@ -52,6 +66,7 @@ namespace TaskScheduler.UnitTests.EventBus
             public void Handle(ErrorThrownEvent @event)
             {
                 WasCalled = true;
+                _tcSource.SetResult(true);
             }
         }
     }
