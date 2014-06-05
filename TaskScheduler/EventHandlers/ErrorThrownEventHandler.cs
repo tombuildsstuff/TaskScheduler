@@ -15,12 +15,18 @@ namespace TaskScheduler.EventHandlers
 
         public void Handle(ErrorThrownEvent @event)
         {
-            _errorLogRepository.Save(new ErrorEntry
+            try
             {
-                DateTime = DateTime.UtcNow,
-                ErrorMessage = @event.Exception.Message,
-                StackTrace = @event.Exception.StackTrace
-            });
+                _errorLogRepository.Save(new ErrorEntry
+                {
+                    DateTime = DateTime.UtcNow,
+                    ErrorMessage = @event.Exception.Message,
+                    StackTrace = @event.Exception.StackTrace
+                });
+            }
+            catch
+            {
+            }
         }
     }
 }
