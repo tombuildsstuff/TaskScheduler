@@ -79,6 +79,14 @@
     <Compile Include="IDateTimeProvider.cs" />
     <Compile Include="IErrorLogRepository.cs" />
     <Compile Include="JSonConfigurationRepository.cs" />
+    <Compile Include="Logging\IRedisConnectionFactory.cs" />
+    <Compile Include="Logging\IRedisConnectionWrapper.cs" />
+    <Compile Include="Logging\IRedisLogger.cs" />
+    <Compile Include="Logging\LogStashLog.cs" />
+    <Compile Include="Logging\LogstashLogger.cs" />
+    <Compile Include="Logging\RedisConnectionFactory.cs" />
+    <Compile Include="Logging\RedisConnectionWrapper.cs" />
+    <Compile Include="Logging\RedisLogger.cs" />
     <Compile Include="Operations\EventOperation.cs" />
     <Compile Include="Operations\HttpOperation.cs" />
     <Compile Include="Operations\IOperation.cs" />
@@ -101,9 +109,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Logging\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
