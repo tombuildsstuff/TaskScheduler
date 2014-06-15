@@ -1,7 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TaskScheduler.EventBus.EventStore;
-using TaskScheduler.Events;
 
 namespace TaskScheduler.EventBus
 {
@@ -22,14 +20,8 @@ namespace TaskScheduler.EventBus
         {
             if (_eventStoreRepository != null)
                 _eventStoreRepository.PublishEvent(@event);
-                Task.Factory.StartNew(() => _eventFactory.GetInstanceOf<T>().Handle(@event)).ContinueWith(t =>
-                {
-                    if (t.IsFaulted) Publish(new ErrorThrownEvent
-                    {
-                        Exception = t.Exception,
-                        Id = Guid.NewGuid()
-                    });
-                });
+            Task.Factory.StartNew(() => _eventFactory.GetInstanceOf<T>().Handle(@event));
+
         }
 
         public static void InitializeBus(IEventHandlerFactory eventHandlerFactory, IEventStoreRepository repository)
