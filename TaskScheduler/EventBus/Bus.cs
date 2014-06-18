@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using TaskScheduler.EventBus.EventStore;
+using TaskScheduler.Events;
 using TaskScheduler.Logging;
 
 namespace TaskScheduler.EventBus
@@ -29,7 +31,14 @@ namespace TaskScheduler.EventBus
                 TypeOfEvent = typeof(T),
                 Event = @event
             });
-            Task.Factory.StartNew(() => _eventFactory.GetInstanceOf<T>().Handle(@event));
+            Task.Factory.StartNew(() => _eventFactory.GetInstanceOf<T>().Handle(@event)).ContinueWith(t =>
+            {
+                if (t.IsFaulted) Publish(new ErrorThrownEvent
+                {
+                    Exception = t.Exception,
+                    Id = Guid.NewGuid()
+                });
+            });
 
         }
 
