@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using NSubstitute;
 using NUnit.Framework;
 using TaskScheduler.EventBus;
 using TaskScheduler.Events;
+using TaskScheduler.Logging;
 using TaskScheduler.UnitTests.EventBus.HelperTestHandlers;
 
 namespace TaskScheduler.UnitTests.EventBus
@@ -18,10 +20,11 @@ namespace TaskScheduler.UnitTests.EventBus
         {
             var faultyElapsedTimeHandler = new FaultyElapsedTimeHandler();
             var eventHandler = new EventHandlerFactory();
+            var redisLogger = Substitute.For<IRedisLogger>();
             _handler.ResetTest();
             eventHandler.RegisterInstance(() => faultyElapsedTimeHandler);
             eventHandler.RegisterInstance(() => _handler);
-            Bus.InitializeBus(eventHandler, null);
+            Bus.InitializeBus(eventHandler, null,redisLogger);
             Bus.Instance.Publish(new ElapsedTimeEvent());
             Task.WaitAll(new [] { faultyElapsedTimeHandler.Task, _handler.Task}, 1000);
         }

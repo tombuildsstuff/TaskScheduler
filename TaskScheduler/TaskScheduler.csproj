@@ -83,10 +83,10 @@
     <Compile Include="Logging\IRedisConnectionWrapper.cs" />
     <Compile Include="Logging\IRedisLogger.cs" />
     <Compile Include="Logging\LogStashLog.cs" />
-    <Compile Include="Logging\LogstashLogger.cs" />
     <Compile Include="Logging\RedisConnectionFactory.cs" />
     <Compile Include="Logging\RedisConnectionWrapper.cs" />
     <Compile Include="Logging\RedisLogger.cs" />
+    <Compile Include="Logging\TaskPublishedLog.cs" />
     <Compile Include="Operations\EventOperation.cs" />
     <Compile Include="Operations\HttpOperation.cs" />
     <Compile Include="Operations\IOperation.cs" />

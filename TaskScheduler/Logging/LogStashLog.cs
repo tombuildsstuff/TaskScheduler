@@ -4,11 +4,11 @@
     {
         public string Name
         {
-            get { return "Task Scheduler Logging"; }
+            get { return "Task Scheduler Event Logging"; }
         }
 
         public string Message { get; set; }
-        public abstract string Type { get; }
+        public abstract string type { get; }
         public string Version
         {
             get { return "1.0"; }
