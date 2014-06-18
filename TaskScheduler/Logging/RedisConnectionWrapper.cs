@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using BookSleeve;
 
-namespace TaskScheduler.Logging.Redis
+namespace TaskScheduler.Logging
 {
     public class RedisConnectionWrapper : IRedisConnectionWrapper
     {

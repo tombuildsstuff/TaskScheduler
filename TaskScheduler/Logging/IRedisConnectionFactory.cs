@@ -1,4 +1,4 @@
-﻿namespace TaskScheduler.Logging.Redis
+﻿namespace TaskScheduler.Logging
 {
     public interface IRedisConnectionFactory
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace TaskScheduler.Logging.Redis
+namespace TaskScheduler.Logging
 {
     public class RedisConnectionFactory : IRedisConnectionFactory
     {
@@ -22,7 +22,7 @@ namespace TaskScheduler.Logging.Redis
 
         private void InitializeConnection()
         {
-            _connectionWrapper.OpenConnection(_hostname,_port);
+            _connectionWrapper.OpenConnection(_hostname, _port);
         }
 
         public IRedisConnectionWrapper GetConnection()

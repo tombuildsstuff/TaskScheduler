@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace TaskScheduler.Logging.Redis
+namespace TaskScheduler.Logging
 {
     public interface IRedisConnectionWrapper
     {
