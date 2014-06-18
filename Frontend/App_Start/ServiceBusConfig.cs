@@ -6,6 +6,7 @@ using TaskScheduler;
 using TaskScheduler.EventBus;
 using TaskScheduler.EventBus.EventStore;
 using TaskScheduler.EventHandlers;
+using TaskScheduler.Logging;
 using TaskScheduler.Operations;
 
 namespace Frontend
@@ -36,7 +37,7 @@ namespace Frontend
             eventHandler.RegisterInstance(() => new ErrorThrownEventHandler(new MongoErrorLogRepository(mongourl)));
             Bus.InitializeBus(eventHandler, useEventStore 
                 ? new EventStoreRepository(new EventStoreConfiguration(eventStoreIp,eventStorePort,eventStoreUserName,eventStorePassword))
-                : null);
+                : null, new RedisLogger(new RedisConnectionFactory(new RedisConnectionWrapper(), redisIp,redisPort, redisMaxRetries), "logstash"));
         }
     }
 }
