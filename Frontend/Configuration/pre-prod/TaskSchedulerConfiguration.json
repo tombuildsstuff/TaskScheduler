@@ -1,4 +1,20 @@
 [
+{ Name: "Review Submission to BV",
+  CommandType: "HttpOperation",
+  CommandParameters: "{ Url: 'http://reviews-tasks-pp.otenv.com/manualtaskexecution?taskName=SubmissionReviewsTask&domains=co_uk', Verb: 'POST' }",
+  Frequency: "every 60 minutes"
+ },
+   { Name: "Reviewer importer",
+  CommandType: "HttpOperation",
+  CommandParameters: "{ Url: 'http://reviews-tasks-pp.otenv.com/manualtaskexecution?taskName=NicknameSyncTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
+  Frequency: "every 60 minutes"
+ },
+ {
+ Name: "Review sync",
+  CommandType: "HttpOperation",
+  CommandParameters: "{ Url: 'http://reviews-tasks-pp.otenv.com/manualtaskexecution?taskName=BvReviewsSyncTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
+  Frequency: "every 60 minutes"
+ },
  {
  Name: "Product Feed",
   CommandType: "HttpOperation",
