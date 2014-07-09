@@ -14,5 +14,11 @@
   CommandType: "HttpOperation",
   CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=BvReviewsSyncTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
   Frequency: "every 60 minutes"
+ },
+ {
+ Name: "Product Feed",
+  CommandType: "HttpOperation",
+  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=ProductFeedTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
+  Frequency: "daily at 06:00"
  }
 ]

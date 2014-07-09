@@ -1,7 +1,8 @@
 [
-{ Name: "No TASK running here",
+ {
+ Name: "Product Feed",
   CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://127.0.0.1', Verb: 'POST' }",
-  Frequency: "every 60 minutes"
-  }
+  CommandParameters: "{ Url: 'http://reviews-tasks-pp.otenv.com/manualtaskexecution?taskName=ProductFeedTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
+  Frequency: "daily at 06:00"
+ }
 ]
