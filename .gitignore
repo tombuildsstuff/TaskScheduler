@@ -19,3 +19,4 @@ logs/
 buildOutput/
 *.userprefs
 UnitTestsResult.xml
+node_modules
