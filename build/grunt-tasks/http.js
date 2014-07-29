@@ -1,8 +1,9 @@
 var task = {
-  warmup:
+  warmup:{
     options: {
        url: 'http://<%= grunt.option("server") %>/',
        timeout: 60000
+   }
   }
 };
 
