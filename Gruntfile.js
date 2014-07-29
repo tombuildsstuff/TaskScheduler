@@ -48,6 +48,7 @@ module.exports = function(grunt) {
         'sshexec:start',
         'wait',
         'sshexec:put-app-online',
+        'http:warmup',
         'clean:afterDeploy'
     ]);
 };
