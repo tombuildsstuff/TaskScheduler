@@ -1,7 +1,7 @@
 [
 { Name: "Review Submission to BV",
   CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-pp.otenv.com/manualtaskexecution?taskName=SubmissionReviewsTask&domains=co_uk', Verb: 'POST' }",
+  CommandParameters: "{ Url: 'http://reviews-tasks-pp.otenv.com/manualtaskexecution?taskName=SubmissionReviewsTask&domains=all', Verb: 'POST' }",
   Frequency: "every 60 minutes"
  },
    { Name: "Reviewer importer",
@@ -24,7 +24,7 @@
  {
  Name: "WebDbSummaryImportTask",
   CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-pp.otenv.com/manualtaskexecution?taskname=WebDbSummaryImportTask&domains=com,couk, de,jp', Verb: 'POST' }",
+  CommandParameters: "{ Url: 'http://reviews-tasks-pp.otenv.com/manualtaskexecution?taskname=WebDbSummaryImportTask&domains=com,couk,de,jp', Verb: 'POST' }",
   Frequency: "daily at 07:00"
  },
 ]
