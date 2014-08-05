@@ -33,4 +33,10 @@
   CommandParameters: "{ Url: 'http://reviews-tasks-sc.otenv.com/manualtaskexecution?taskname=WebDbSummaryImportTask&domains=com,jp', Verb: 'POST' }",
   Frequency: "daily at 12:00"
  },
+  {
+ Name: "DinersChoice generation",
+  CommandType: "HttpOperation",
+  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskname=DinersChoiceTask&domains=com,jp,couk,de,commx', Verb: 'POST' }",
+  Frequency: "monthly on 5th at 11:00"
+ },
 ]
