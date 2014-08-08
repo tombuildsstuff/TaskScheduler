@@ -34,8 +34,8 @@
             
             <div> Frequency: @item.Frequency </div>
         </div>
-        <div> Last running On : @item.LastRunningOn</div>
-        <div> Next Running On : @item.NextRunningOn</div>
+        <div> Last running On : @item.LastRunningOn.ToString("dd MMM yyyy HH':'mm 'UTC'")</div>
+        <div> Next Running On : @item.NextRunningOn.ToString("dd MMM yyyy HH':'mm 'UTC'")</div>
         <div> Action type: @item.TaskCommandType (@item.TaskCommandParameters)</div>
         <div> Response status: @item.ResponseStatus.ToString()</div>
     </div>
