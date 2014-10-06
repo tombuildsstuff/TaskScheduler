@@ -1,24 +1,24 @@
 [
 { Name: "Review Submission to BV",
   CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-sc.otenv.com/manualtaskexecution?taskName=SubmissionReviewsTask&domains=all', Verb: 'POST' }",
+  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=SubmissionReviewsTask&domains=all', Verb: 'POST' }",
   Frequency: "every 60 minutes"
  },
    { Name: "Reviewer importer",
   CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-sc.otenv.com/manualtaskexecution?taskName=NicknameSyncTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
+  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=NicknameSyncTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
   Frequency: "every 60 minutes"
  },
  {
  Name: "Review sync",
   CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-sc.otenv.com/manualtaskexecution?taskName=BvReviewsSyncTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
+  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=BvReviewsSyncTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
   Frequency: "every 60 minutes"
  },
  {
  Name: "Product Feed",
   CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-sc.otenv.com/manualtaskexecution?taskName=ProductFeedTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
+  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=ProductFeedTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
   Frequency: "daily at 06:00"
  },
   {
@@ -36,7 +36,7 @@
   {
  Name: "DinersChoice generation",
   CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-sc.otenv.com/manualtaskexecution?taskname=DinersChoiceTask&domains=com,jp,couk,de,commx', Verb: 'POST' }",
+  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskname=DinersChoiceTask&domains=com,jp,couk,de,commx', Verb: 'POST' }",
   Frequency: "monthly on 5th at 11:00"
  },
 ]
