@@ -1,11 +1,5 @@
-﻿using System;
-using System.Configuration;
-using System.Linq;
-using System.Net;
-using System.Text;
+﻿using System.Net;
 using Newtonsoft.Json;
-using TaskScheduler.EventBus;
-using TaskScheduler.Events;
 
 namespace TaskScheduler.Operations
 {
@@ -13,7 +7,10 @@ namespace TaskScheduler.Operations
     {
         private class HttpParameters
         {
+            public int? Timeout { get; set; }
+
             public string Url { get; set; }
+
             public string Verb { get; set; }
         }
 
@@ -23,6 +20,10 @@ namespace TaskScheduler.Operations
             var client = WebRequest.Create(deserializedParameters.Url);
             client.Method = "POST";
             //client.Proxy = new WebProxy("192.168.220.249", 3128);
+
+            if (deserializedParameters.Timeout.HasValue)
+                client.Timeout = deserializedParameters.Timeout.Value;
+            
             client.ContentLength = 0;
             client.GetResponse();
         }
