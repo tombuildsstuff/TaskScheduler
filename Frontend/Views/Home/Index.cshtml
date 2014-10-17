@@ -2,44 +2,63 @@
 @model IEnumerable<TaskScheduler.TaskInfo>
 
     @{
-        Layout = null;
+    Layout = null;
     }
-
     <!DOCTYPE HTML>
 
     <html>
     <head>
         <title>Task Scheduler</title>
-        <link rel="stylesheet" type="text/css" href="~/Content/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/style.css")" />
     </head>
     <body>
-        <h2 class="title">Task Scheduler Information Panel</h2>
-        <div class="TaskPanel">
-            @foreach (var item in Model)
-{
-    <div class="task">
-        <div class="Taskheader">
-            <div class="TaskOnOffSwitch">
-                @if (item.Status == TaskStatus.Enabled)
-                {
-                    <p class="TaskOn">ON</p>
-                }
-                else
-                {
-                    <p class="TaskOff">DISABLED</p>
-                }
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="@Url.Content("~/Content/Images/opentable-logo.png")" class="logo"> Task Scheduler
+                    </a>
+                </div>
             </div>
-            <div class="tasktitle">@item.Name</div>  
-
-            
-            <div> Frequency: @item.Frequency </div>
         </div>
-        <div> Last running On : @item.LastRunningOn.ToString("dd MMM yyyy HH':'mm 'UTC'")</div>
-        <div> Next Running On : @item.NextRunningOn.ToString("dd MMM yyyy HH':'mm 'UTC'")</div>
-        <div> Action type: @item.TaskCommandType (@item.TaskCommandParameters)</div>
-        <div> Response status: @item.ResponseStatus.ToString()</div>
-    </div>
-}
+        <div class="container" id="tasks">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Task</td>
+                        <td>Status</td>
+                        <td>Frequency</td>
+                        <td>Response Status</td>
+                        <td>Last Ran</td>
+                        <td>Next Running</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><b>@item.Name</b></td>
+                            <td>@((item.Status == TaskStatus.Enabled) ? "Enabled" : "Disabled")</td>
+                            <td>@item.Frequency</td>
+                            <td>@item.ResponseStatus.ToString()</td>
+                            <td>@item.LastRunningOn.ToString("dd MMM yyyy HH':'mm 'UTC'")</td>
+                            <td>@item.NextRunningOn.ToString("dd MMM yyyy HH':'mm 'UTC'")</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                Action type: @item.TaskCommandType (@item.TaskCommandParameters)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
