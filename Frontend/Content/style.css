@@ -1,8 +1,9 @@
-﻿body {
+﻿.logo {
+    height: 30px
 }
 
-.TaskPanel {
-    
+#tasks {
+    margin-top: 60px
 }
 
 .task {
