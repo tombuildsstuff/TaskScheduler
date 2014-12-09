@@ -83,4 +83,10 @@
   CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/build/all', Timeout: 3600000, Verb: 'POST' }",
   Frequency: "monthly on 6th at 11:00"
  },
+ {
+  Name: "RestaurantSummary generation",
+  CommandType: "HttpOperation",
+  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskname=RestaurantSummaryGenerationTask&domains=com,jp,couk,de,commx', Verb: 'POST' }",
+  Frequency: "daily at 00:00"
+ },
 ]
