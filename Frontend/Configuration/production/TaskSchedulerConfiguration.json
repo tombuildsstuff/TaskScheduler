@@ -65,4 +65,22 @@
   CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/update/all', Timeout: 1800000, Verb: 'POST' }",
   Frequency: "every 30 minutes"
  },
+ {
+  Name: "DinersChoice activation",
+  CommandType: "HttpOperation",
+  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskname=ActivateDinersChoiceTask&domains=com,jp,couk,de,commx', Verb: 'POST' }",
+  Frequency: "monthly on 6th at 10:50"
+ },
+ {
+  Name: "Search - EU - Index Builder - Full Re-Build for DinersChoice",
+  CommandType: "HttpOperation",
+  CommandParameters: "{ Url: 'http://search-indexbuilder-ln.otenv.com/build/all', Timeout: 3600000, Verb: 'POST' }",
+  Frequency: "monthly on 6th at 11:00"
+ },
+ {
+  Name: "Search - NA - Index Builder - Full Re-Build for DinersChoice",
+  CommandType: "HttpOperation",
+  CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/build/all', Timeout: 3600000, Verb: 'POST' }",
+  Frequency: "monthly on 6th at 11:00"
+ },
 ]
