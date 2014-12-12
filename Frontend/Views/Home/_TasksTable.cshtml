@@ -19,7 +19,7 @@
                     <td><b>@item.Name</b></td>
                     <td>@((item.Status == TaskStatus.Enabled) ? "Enabled" : "Disabled")</td>
                     <td>@item.Frequency</td>
-                    <td>@item.ResponseStatus.ToString()</td>
+                    <td><strong>@item.ResponseStatus.ToString()</strong></td>
                     <td>@item.LastRunningOn.ToString("dd MMM yyyy HH':'mm':'ss 'UTC'")</td>
                     <td>@item.NextRunningOn.ToString("dd MMM yyyy HH':'mm':'ss 'UTC'")</td>
                 </tr>
