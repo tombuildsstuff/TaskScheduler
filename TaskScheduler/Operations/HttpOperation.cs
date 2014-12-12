@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using Newtonsoft.Json;
 
 namespace TaskScheduler.Operations
@@ -11,8 +12,8 @@ namespace TaskScheduler.Operations
             var client = (HttpWebRequest)WebRequest.Create(deserializedParameters.Url);
             client.Method = deserializedParameters.Verb ?? "POST";
 
-            if (deserializedParameters.Timeout.HasValue)
-                client.Timeout = deserializedParameters.Timeout.Value;
+            if (deserializedParameters.TimeoutInSeconds.HasValue)
+                client.Timeout = (int) TimeSpan.FromSeconds(deserializedParameters.TimeoutInSeconds.Value).TotalMilliseconds;
             
             client.ContentLength = 0;
             var response = (HttpWebResponse)client.GetResponse();
@@ -21,7 +22,7 @@ namespace TaskScheduler.Operations
 
         private class HttpParameters
         {
-            public int? Timeout { get; set; }
+            public int? TimeoutInSeconds { get; set; }
 
             public string Url { get; set; }
 
