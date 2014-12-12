@@ -6,6 +6,7 @@
         Started,
         Finished,
         ConnectionFailed,
-        FailedToComplete
+        FailedToComplete,
+        Exception
     }
 }

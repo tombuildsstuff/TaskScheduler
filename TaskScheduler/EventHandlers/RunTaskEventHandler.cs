@@ -28,21 +28,24 @@ namespace TaskScheduler.EventHandlers
             task.UpdateNextRunningOn(_timeSpanEvaluator.Evaluate(_dateTimeProvider.NowUtc, task.Frequency));
             task.UpdateResponseStatus(ResponseStatus.Unknown);
             _taskRepository.SaveTaskInfo(task);
+            ResponseStatus? result = null;
             try
             {
-                RunTask(task);
+                result = RunTask(task);
+                task.UpdateResponseStatus(result.Value);
+                _taskRepository.SaveTaskInfo(task);
             }
             catch(Exception ex)
             {
-                task.UpdateResponseStatus(ResponseStatus.ConnectionFailed);
-                Bus.Instance.Publish(new ErrorThrownEvent() {Exception = ex, Id = Guid.NewGuid()});
+                task.UpdateResponseStatus(result ?? ResponseStatus.Exception);
+                Bus.Instance.Publish(new ErrorThrownEvent {Exception = ex, Id = Guid.NewGuid()});
                 _taskRepository.SaveTaskInfo(task);
             }
         }
-        private void RunTask(TaskInfo info)
+        private ResponseStatus RunTask(TaskInfo info)
         {
             var operation = _operationResolver.Resolve(info.TaskCommandType);
-            operation.Execute(info.TaskCommandParameters);
+            return operation.Execute(info.TaskCommandParameters);
         }
     }
 }
