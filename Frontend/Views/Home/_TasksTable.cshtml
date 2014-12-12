@@ -1,0 +1,33 @@
+﻿@using TaskScheduler
+@model IEnumerable<TaskScheduler.TaskInfo>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Task</td>
+                <td>Status</td>
+                <td>Frequency</td>
+                <td>Response Status</td>
+                <td>Last Ran</td>
+                <td>Next Running</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><b>@item.Name</b></td>
+                    <td>@((item.Status == TaskStatus.Enabled) ? "Enabled" : "Disabled")</td>
+                    <td>@item.Frequency</td>
+                    <td>@item.ResponseStatus.ToString()</td>
+                    <td>@item.LastRunningOn.ToString("dd MMM yyyy HH':'mm':'ss 'UTC'")</td>
+                    <td>@item.NextRunningOn.ToString("dd MMM yyyy HH':'mm':'ss 'UTC'")</td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        Action type: @item.TaskCommandType (@item.TaskCommandParameters)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
