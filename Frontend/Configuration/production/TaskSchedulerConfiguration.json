@@ -1,92 +1,92 @@
 [
- {
-  Name: "Review Submission to BV",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=SubmissionReviewsTask&domains=all', Verb: 'POST' }",
-  Frequency: "every 60 minutes"
- },
- {
-  Name: "Reviewer importer",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=NicknameSyncTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
-  Frequency: "every 60 minutes"
- },
- {
-  Name: "Review sync",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=BvReviewsSyncTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
-  Frequency: "every 60 minutes"
- },
- {
-  Name: "Product Feed",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=ProductFeedTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
-  Frequency: "daily at 06:00"
- },
- {
-  Name: "WebDbSummaryImportTask EU",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskname=WebDbSummaryImportTask&domains=couk,de', Verb: 'POST' }",
-  Frequency: "daily at 06:00"
- },
- {
-  Name: "WebDbSummaryImportTask NA-AP",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-sc.otenv.com/manualtaskexecution?taskname=WebDbSummaryImportTask&domains=com,jp', Verb: 'POST' }",
-  Frequency: "daily at 12:00"
- },
- {
-  Name: "DinersChoice generation",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskname=DinersChoiceTask&domains=com,jp,couk,de,commx', Verb: 'POST' }",
-  Frequency: "monthly on 5th at 11:00"
- },
- {
-  Name: "Search - EU - Index Builder - Full Re-Build",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://search-indexbuilder-ln.otenv.com/build/all', Timeout: 3600000, Verb: 'POST' }",
-  Frequency: "daily at 02:00"
- },
- {
-  Name: "Search - EU  - Index Builder - Update",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://search-indexbuilder-ln.otenv.com/update/all', Timeout: 1800000, Verb: 'POST' }",
-  Frequency: "every 30 minutes"
- },
- {
-  Name: "Search - NA - Index Builder - Full Re-Build",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/build/all', Timeout: 3600000, Verb: 'POST' }",
-  Frequency: "daily at 09:00"
- },
- {
-  Name: "Search - NA  - Index Builder - Update",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/update/all', Timeout: 1800000, Verb: 'POST' }",
-  Frequency: "every 30 minutes"
- },
- {
-  Name: "DinersChoice activation",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskname=ActivateDinersChoiceTask&domains=com,jp,couk,de,commx', Verb: 'POST' }",
-  Frequency: "monthly on 6th at 10:50"
- },
- {
-  Name: "Search - EU - Index Builder - Full Re-Build for DinersChoice",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://search-indexbuilder-ln.otenv.com/build/all', Timeout: 3600000, Verb: 'POST' }",
-  Frequency: "monthly on 6th at 11:00"
- },
- {
-  Name: "Search - NA - Index Builder - Full Re-Build for DinersChoice",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/build/all', Timeout: 3600000, Verb: 'POST' }",
-  Frequency: "monthly on 6th at 11:00"
- },
- {
-  Name: "RestaurantSummary generation",
-  CommandType: "HttpOperation",
-  CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskname=RestaurantSummaryGenerationTask&domains=com,jp,couk,de,commx', Verb: 'POST' }",
-  Frequency: "daily at 00:00"
- },
+    {
+        Name: "Review Submission to BV",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=SubmissionReviewsTask&domains=all', Verb: 'POST' }",
+        Frequency: "every 60 minutes"
+    },
+    {
+        Name: "Reviewer importer",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=NicknameSyncTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
+        Frequency: "every 60 minutes"
+    },
+    {
+        Name: "Review sync",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=BvReviewsSyncTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
+        Frequency: "every 60 minutes"
+    },
+    {
+        Name: "Product Feed",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskName=ProductFeedTask&domains=co_uk,com,de,jp', Verb: 'POST' }",
+        Frequency: "daily at 06:00"
+    },
+    {
+        Name: "WebDbSummaryImportTask EU",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskname=WebDbSummaryImportTask&domains=couk,de', Verb: 'POST' }",
+        Frequency: "daily at 06:00"
+    },
+    {
+        Name: "WebDbSummaryImportTask NA-AP",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://reviews-tasks-sc.otenv.com/manualtaskexecution?taskname=WebDbSummaryImportTask&domains=com,jp', Verb: 'POST' }",
+        Frequency: "daily at 12:00"
+    },
+    {
+        Name: "DinersChoice generation",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskname=DinersChoiceTask&domains=com,jp,couk,de,commx', Verb: 'POST' }",
+        Frequency: "monthly on 5th at 11:00"
+    },
+    {
+        Name: "Search - EU - Index Builder - Full Re-Build",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://search-indexbuilder-ln.otenv.com/build/all', TimeoutInSeconds: 3600, Verb: 'POST' }",
+        Frequency: "daily at 02:00"
+    },
+    {
+        Name: "Search - EU  - Index Builder - Update",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://search-indexbuilder-ln.otenv.com/update/all', TimeoutInSeconds: 1800, Verb: 'POST' }",
+        Frequency: "every 30 minutes"
+    },
+    {
+        Name: "Search - NA - Index Builder - Full Re-Build",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/build/all', TimeoutInSeconds: 3600, Verb: 'POST' }",
+        Frequency: "daily at 09:00"
+    },
+    {
+        Name: "Search - NA  - Index Builder - Update",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/update/all', TimeoutInSeconds: 1800, Verb: 'POST' }",
+        Frequency: "every 30 minutes"
+    },
+    {
+        Name: "DinersChoice activation",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskname=ActivateDinersChoiceTask&domains=com,jp,couk,de,commx', Verb: 'POST' }",
+        Frequency: "monthly on 6th at 10:50"
+    },
+    {
+        Name: "Search - EU - Index Builder - Full Re-Build for DinersChoice",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://search-indexbuilder-ln.otenv.com/build/all', TimeoutInSeconds: 3600, Verb: 'POST' }",
+        Frequency: "monthly on 6th at 11:00"
+    },
+    {
+        Name: "Search - NA - Index Builder - Full Re-Build for DinersChoice",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/build/all', TimeoutInSeconds: 3600, Verb: 'POST' }",
+        Frequency: "monthly on 6th at 11:00"
+    },
+    {
+        Name: "RestaurantSummary generation",
+        CommandType: "HttpOperation",
+        CommandParameters: "{ Url: 'http://reviews-tasks-ln.otenv.com/manualtaskexecution?taskname=RestaurantSummaryGenerationTask&domains=com,jp,couk,de,commx', Verb: 'POST' }",
+        Frequency: "daily at 00:00"
+    }
 ]
