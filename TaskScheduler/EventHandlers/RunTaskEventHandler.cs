@@ -38,7 +38,7 @@ namespace TaskScheduler.EventHandlers
             catch(Exception ex)
             {
                 UpdateTaskWithStatus(task, result ?? ResponseStatus.Exception);
-                Bus.Instance.Publish(new ErrorThrownEvent {Exception = ex, Id = Guid.NewGuid()});
+                Bus.Instance.Publish(new ErrorThrownEvent { Task = task, Exception = ex, Id = Guid.NewGuid()});
             }
         }
 

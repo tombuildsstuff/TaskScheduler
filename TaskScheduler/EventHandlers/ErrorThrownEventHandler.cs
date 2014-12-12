@@ -21,7 +21,7 @@ namespace TaskScheduler.EventHandlers
                 {
                     DateTime = DateTime.UtcNow,
                     ErrorMessage = @event.Exception.Message,
-                    StackTrace = @event.Exception.StackTrace
+                    StackTrace = @event.Exception.StackTrace,
                 });
             }
             catch

@@ -6,6 +6,9 @@ namespace TaskScheduler.Events
     public class ErrorThrownEvent : IEvent
     {
         public Guid Id { get; set; }
+
         public Exception Exception { get; set; }
+
+        public TaskInfo Task { get; set; }
     }
 }
