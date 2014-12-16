@@ -96,7 +96,7 @@
     <Compile Include="Operations\IOperationResolver.cs" />
     <Compile Include="Operations\OperationResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResponseStatus.cs" />
+    <Compile Include="OperationResponse.cs" />
     <Compile Include="Services\ITaskMonitoringService.cs" />
     <Compile Include="Services\TaskMonitoringService.cs" />
     <Compile Include="StandardDateTimeProvider.cs" />

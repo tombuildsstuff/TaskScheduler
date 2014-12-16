@@ -26,29 +26,29 @@ namespace TaskScheduler.EventHandlers
                 @event.TaskCommandType, @event.TaskCommandParameters, @event.Frequency, @event.ResponseStatus);
             task.UpdateLastRunningOn(_dateTimeProvider.NowUtc);
             task.UpdateNextRunningOn(_timeSpanEvaluator.Evaluate(_dateTimeProvider.NowUtc, task.Frequency));
-            UpdateTaskWithStatus(task, ResponseStatus.Unknown);
+            UpdateTaskWithStatus(task, OperationResponse.Unknown);
 
-            ResponseStatus? result = null;
+            OperationResponse? result = null;
             try
             {
-                UpdateTaskWithStatus(task, ResponseStatus.Started);
+                UpdateTaskWithStatus(task, OperationResponse.Started);
                 result = RunTask(task);
                 UpdateTaskWithStatus(task, result.Value);
             }
             catch(Exception ex)
             {
-                UpdateTaskWithStatus(task, result ?? ResponseStatus.Exception);
+                UpdateTaskWithStatus(task, result ?? OperationResponse.Exception);
                 Bus.Instance.Publish(new ErrorThrownEvent { Task = task, Exception = ex, Id = Guid.NewGuid()});
             }
         }
 
-        private void UpdateTaskWithStatus(TaskInfo task, ResponseStatus started)
+        private void UpdateTaskWithStatus(TaskInfo task, OperationResponse started)
         {
             task.UpdateResponseStatus(started);
             _taskRepository.SaveTaskInfo(task);
         }
 
-        private ResponseStatus RunTask(TaskInfo info)
+        private OperationResponse RunTask(TaskInfo info)
         {
             var operation = _operationResolver.Resolve(info.TaskCommandType);
             return operation.Execute(info.TaskCommandParameters);

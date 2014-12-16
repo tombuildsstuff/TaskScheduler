@@ -21,7 +21,7 @@ namespace MongoDataAccess
             public string TaskCommandType { get; set; }
             public string TaskCommandParameters { get; set; }
             public string Frequency { get; set; }
-            public ResponseStatus ResponseStatus { get; set; }
+            public OperationResponse ResponseStatus { get; set; }
         }
 
         private readonly string _mongoUrl;

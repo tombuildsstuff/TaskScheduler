@@ -2,6 +2,6 @@
 {
     public interface IOperation
     {
-        ResponseStatus Execute(string parameters);
+        OperationResponse Execute(string parameters);
     }
 }
