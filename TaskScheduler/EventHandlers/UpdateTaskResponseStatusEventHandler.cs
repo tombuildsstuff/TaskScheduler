@@ -20,16 +20,16 @@ namespace TaskScheduler.EventHandlers
             _repository.SaveTaskInfo(task);
         }
 
-        private static ResponseStatus ConvertStringToStatus(string taskStatus)
+        private static OperationResponse ConvertStringToStatus(string taskStatus)
         {
             switch (taskStatus.ToLower())
             {
                 case "started":
-                    return ResponseStatus.Started;
+                    return OperationResponse.Started;
                 case "finished":
-                    return ResponseStatus.Finished;
+                    return OperationResponse.Finished;
                 default:
-                    return ResponseStatus.Unknown;
+                    return OperationResponse.Unknown;
             }
         }
     }

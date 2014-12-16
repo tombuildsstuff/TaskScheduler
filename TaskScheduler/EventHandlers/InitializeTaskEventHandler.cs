@@ -36,7 +36,7 @@ namespace TaskScheduler.EventHandlers
 
         private TaskInfo GenerateTaskFromEvent(InitializeTaskEvent cfg)
         {
-            return new TaskInfo(cfg.Name, TaskStatus.Enabled, DateTime.MinValue, EvaluateNextRunningTime(cfg.Frequency), cfg.CommandType, cfg.CommandParameters, cfg.Frequency, ResponseStatus.Unknown);
+            return new TaskInfo(cfg.Name, TaskStatus.Enabled, DateTime.MinValue, EvaluateNextRunningTime(cfg.Frequency), cfg.CommandType, cfg.CommandParameters, cfg.Frequency, OperationResponse.Unknown);
         }
 
         private DateTime EvaluateNextRunningTime(string frequency)

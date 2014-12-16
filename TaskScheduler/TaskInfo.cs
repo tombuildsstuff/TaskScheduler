@@ -4,7 +4,7 @@ namespace TaskScheduler
 {
     public class TaskInfo
     {
-        public TaskInfo(string name, TaskStatus status, DateTime lastRunningOn, DateTime nextRunningOn, string taskCommandType, string taskCommandParameters, string frequency, ResponseStatus responseStatus)
+        public TaskInfo(string name, TaskStatus status, DateTime lastRunningOn, DateTime nextRunningOn, string taskCommandType, string taskCommandParameters, string frequency, OperationResponse responseStatus)
         {
             ResponseStatus = responseStatus;
             Frequency = frequency;
@@ -23,7 +23,7 @@ namespace TaskScheduler
         public string TaskCommandType { get; private set; }
         public string TaskCommandParameters { get; private set; }
         public string Frequency { get; private set; }
-        public ResponseStatus ResponseStatus { get; private set; }
+        public OperationResponse ResponseStatus { get; private set; }
 
         public void UpdateLastRunningOn(DateTime lastRunningOn)
         {
@@ -50,7 +50,7 @@ namespace TaskScheduler
             Frequency = frequency;
         }
 
-        public void UpdateResponseStatus(ResponseStatus responseStatus)
+        public void UpdateResponseStatus(OperationResponse responseStatus)
         {
             ResponseStatus = responseStatus;
         }

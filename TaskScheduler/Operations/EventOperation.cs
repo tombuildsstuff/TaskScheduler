@@ -2,9 +2,9 @@
 {
     public class EventOperation : IOperation
     {
-        public void Execute(string parameters)
+        public OperationResponse Execute(string parameters)
         {
-            
+            return OperationResponse.Unknown;
         }
     }
 }
