@@ -1,6 +1,6 @@
 ﻿namespace TaskScheduler
 {
-    public enum OperationResponse
+    public enum ResponseStatus
     {
         Unknown,
         Started,
