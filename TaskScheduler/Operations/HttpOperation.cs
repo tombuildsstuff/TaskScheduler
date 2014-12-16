@@ -9,7 +9,7 @@ namespace TaskScheduler.Operations
         public ResponseStatus Execute(string parameters)
         {
             var deserializedParameters = JsonConvert.DeserializeObject<HttpParameters>(parameters);
-            var client = (HttpWebRequest)WebRequest.Create(deserializedParameters.Url);
+            var client = WebRequest.Create(deserializedParameters.Url);
             client.Method = deserializedParameters.Verb ?? "POST";
 
             if (deserializedParameters.TimeoutInSeconds.HasValue)
@@ -17,7 +17,14 @@ namespace TaskScheduler.Operations
             
             client.ContentLength = 0;
             var response = (HttpWebResponse)client.GetResponse();
-            return response.StatusCode == HttpStatusCode.OK ? ResponseStatus.Finished : ResponseStatus.FailedToComplete;
+            
+            return IsSuccessful(response) ? ResponseStatus.Finished : ResponseStatus.FailedToComplete;
+        }
+
+        private bool IsSuccessful(HttpWebResponse response)
+        {
+            var intStatusCode = (int)response.StatusCode;
+            return intStatusCode >= 200 && intStatusCode < 300;
         }
 
         private class HttpParameters
