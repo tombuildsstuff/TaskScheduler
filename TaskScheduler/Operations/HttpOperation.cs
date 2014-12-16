@@ -6,7 +6,7 @@ namespace TaskScheduler.Operations
 {
     public class HttpOperation : IOperation
     {
-        public OperationResponse Execute(string parameters)
+        public ResponseStatus Execute(string parameters)
         {
             var deserializedParameters = JsonConvert.DeserializeObject<HttpParameters>(parameters);
             var client = (HttpWebRequest)WebRequest.Create(deserializedParameters.Url);
@@ -17,7 +17,7 @@ namespace TaskScheduler.Operations
             
             client.ContentLength = 0;
             var response = (HttpWebResponse)client.GetResponse();
-            return response.StatusCode == HttpStatusCode.OK ? OperationResponse.Finished : OperationResponse.FailedToComplete;
+            return response.StatusCode == HttpStatusCode.OK ? ResponseStatus.Finished : ResponseStatus.FailedToComplete;
         }
 
         private class HttpParameters
