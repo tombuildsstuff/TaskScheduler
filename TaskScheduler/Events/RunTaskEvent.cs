@@ -14,5 +14,21 @@ namespace TaskScheduler.Events
         public string TaskCommandParameters { get; set; }
         public string Frequency { get; set; }
         public ResponseStatus ResponseStatus { get; set; }
+
+        public static RunTaskEvent FromTask(TaskInfo taskInfo)
+        {
+            return new RunTaskEvent
+            {
+                Id = Guid.NewGuid(),
+                Frequency = taskInfo.Frequency,
+                LastRunningOn = taskInfo.LastRunningOn,
+                Status = taskInfo.Status,
+                ResponseStatus = taskInfo.ResponseStatus,
+                NextRunningOn = taskInfo.NextRunningOn,
+                TaskCommandParameters = taskInfo.TaskCommandParameters,
+                TaskCommandType = taskInfo.TaskCommandType,
+                Name = taskInfo.Name
+            };
+        }
     }
 }

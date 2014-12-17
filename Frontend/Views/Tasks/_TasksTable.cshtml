@@ -10,6 +10,7 @@
                 <td>Response Status</td>
                 <td>Last Ran</td>
                 <td>Next Running</td>
+                <td style="width: 50px"></td>
             </tr>
         </thead>
         <tbody>
@@ -22,9 +23,18 @@
                     <td><strong>@item.ResponseStatus.ToString()</strong></td>
                     <td>@item.LastRunningOn.ToString("dd MMM yyyy HH':'mm':'ss 'UTC'")</td>
                     <td>@item.NextRunningOn.ToString("dd MMM yyyy HH':'mm':'ss 'UTC'")</td>
+                    <td>
+                        @{
+                            using (Html.BeginForm("trigger", "tasks"))
+                            {
+                                @Html.Hidden("taskName", item.Name)
+                                <input type="submit" value="Run" />
+                            }
+                        }
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="6">
+                    <td colspan="7">
                         Action type: @item.TaskCommandType (@item.TaskCommandParameters)
                     </td>
                 </tr>

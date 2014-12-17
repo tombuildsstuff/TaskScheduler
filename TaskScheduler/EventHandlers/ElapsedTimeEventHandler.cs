@@ -26,18 +26,7 @@ namespace TaskScheduler.EventHandlers
             {
                 if (DateTime.Compare(enabledTask.NextRunningOn, now) == -1 && (enabledTask.NextRunningOn - now) <= new TimeSpan(0, 1, 0))
                 {
-                    Bus.Instance.Publish(new RunTaskEvent
-                    {
-                        Id = Guid.NewGuid(),
-                        Frequency = enabledTask.Frequency,
-                        LastRunningOn = enabledTask.LastRunningOn,
-                        Status = enabledTask.Status,
-                        ResponseStatus = enabledTask.ResponseStatus,
-                        NextRunningOn = enabledTask.NextRunningOn,
-                        TaskCommandParameters = enabledTask.TaskCommandParameters,
-                        TaskCommandType = enabledTask.TaskCommandType,
-                        Name = enabledTask.Name
-                    });
+                    Bus.Instance.Publish(RunTaskEvent.FromTask(enabledTask));
                 }
             });
         }
