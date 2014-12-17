@@ -41,6 +41,7 @@ module.exports = function(grunt) {
         'sshexec:take-app-offline',
         'get-artifacts',
         'sshexec:stop',
+        'sshexec:remove-mono-cache',
         'sshexec:make-release-dir',
         'sshexec:update-symlinks',
         'sftp:deploy',

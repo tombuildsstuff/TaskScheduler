@@ -24,6 +24,9 @@ var task = {
             ignoreErrors: true
         }
     },
+    'remove-mono-cache': {
+        command: "rm -rf /tmp/otdeploy-temp-aspnet-0"
+    },
     'make-release-dir': {
         command: "mkdir -m 777 -p " + release + "/logs"
     },
