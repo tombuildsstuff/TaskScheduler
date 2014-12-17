@@ -12,8 +12,8 @@ namespace TaskScheduler.Operations
             var client = WebRequest.Create(deserializedParameters.Url);
             client.Method = deserializedParameters.Verb ?? "POST";
 
-            if (deserializedParameters.TimeoutInSeconds.HasValue)
-                client.Timeout = (int) TimeSpan.FromSeconds(deserializedParameters.TimeoutInSeconds.Value).TotalMilliseconds;
+            if (!string.IsNullOrEmpty(deserializedParameters.TimeoutInSeconds))
+                client.Timeout = (int) TimeSpan.FromSeconds(int.Parse(deserializedParameters.TimeoutInSeconds)).TotalMilliseconds;
             
             client.ContentLength = 0;
             var response = (HttpWebResponse)client.GetResponse();
@@ -29,7 +29,7 @@ namespace TaskScheduler.Operations
 
         private class HttpParameters
         {
-            public int? TimeoutInSeconds { get; set; }
+            public string TimeoutInSeconds { get; set; }
 
             public string Url { get; set; }
 
