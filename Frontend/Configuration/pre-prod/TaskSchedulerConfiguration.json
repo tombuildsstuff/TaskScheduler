@@ -32,13 +32,13 @@
     {
         Name: "Search - Index Builder - Full Re-Build",
         CommandType: "HttpOperation",
-        CommandParameters: "{ Url: 'http://search-indexbuilder-pp.otenv.com/build/all', TimeoutInSeconds: 3600, Verb: 'POST' }",
+        CommandParameters: "{ Url: 'http://search-indexbuilder-pp.otenv.com/build/all', TimeoutInSeconds: "3600", Verb: 'POST' }",
         Frequency: "daily at 02:00"
     },
     {
         Name: "Search - Index Builder - Update",
         CommandType: "HttpOperation",
-        CommandParameters: "{ Url: 'http://search-indexbuilder-pp.otenv.com/update/all', TimeoutInSeconds: 1800, Verb: 'POST' }",
+        CommandParameters: "{ Url: 'http://search-indexbuilder-pp.otenv.com/update/all', TimeoutInSeconds: "1800", Verb: 'POST' }",
         Frequency: "every 30 minutes"
     }
 ]
