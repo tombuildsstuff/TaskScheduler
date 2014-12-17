@@ -1,9 +1,5 @@
-﻿using System.Configuration;
-using System.IO;
-using System.Web.Http;
+﻿using System.IO;
 using System.Web.Mvc;
-using MongoDataAccess;
-using TaskScheduler.Services;
 
 namespace Frontend.Controllers
 {

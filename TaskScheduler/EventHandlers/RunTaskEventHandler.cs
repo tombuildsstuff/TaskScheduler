@@ -22,8 +22,7 @@ namespace TaskScheduler.EventHandlers
 
         public void Handle(RunTaskEvent @event)
         {
-            var task = new TaskInfo(@event.Name, @event.Status, @event.LastRunningOn, @event.NextRunningOn,
-                @event.TaskCommandType, @event.TaskCommandParameters, @event.Frequency, @event.ResponseStatus);
+            var task = new TaskInfo(@event.Name, @event.Status, @event.LastRunningOn, @event.NextRunningOn, @event.TaskCommandType, @event.TaskCommandParameters, @event.Frequency, @event.ResponseStatus);
             task.UpdateLastRunningOn(_dateTimeProvider.NowUtc);
             task.UpdateNextRunningOn(_timeSpanEvaluator.Evaluate(_dateTimeProvider.NowUtc, task.Frequency));
             UpdateTaskWithStatus(task, ResponseStatus.Unknown);

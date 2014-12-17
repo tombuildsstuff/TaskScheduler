@@ -81,8 +81,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\ServiceBusConfig.cs" />
     <Compile Include="App_Start\TaskSchedulerConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\ResponseController.cs" />
+    <Compile Include="ViewModels\TasksOverview.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -132,11 +133,11 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="TaskSchedulerConfiguration.json" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Tasks\Index.cshtml" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Home\_TasksTable.cshtml" />
+    <Content Include="Views\Tasks\_TasksTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

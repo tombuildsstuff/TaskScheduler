@@ -19,6 +19,11 @@ namespace TaskScheduler.Services
             return _repository.GetAllTask();
         }
 
+        public TaskInfo GetByName(string taskName)
+        {
+            return _repository.GetTaskByName(taskName);
+        }
+
         public void UpdateTaskResponseStatus(string taskName, string taskStatus)
         {
             Bus.Instance.Publish(new UpdateTaskResponseStatusEvent
@@ -27,7 +32,6 @@ namespace TaskScheduler.Services
                 TaskName = taskName,
                 TaskStatus = taskStatus
             });
-            
         }
     }
 }
