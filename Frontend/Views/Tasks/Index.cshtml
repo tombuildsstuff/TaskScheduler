@@ -1,4 +1,4 @@
-﻿@using TaskScheduler
+﻿@using System.Configuration
 @model Frontend.ViewModels.TasksOverview
 
     @{
@@ -7,7 +7,7 @@
     <!DOCTYPE HTML>
     <html>
     <head>
-        <title>Task Scheduler</title>
+        <title>Task Scheduler | @ConfigurationManager.AppSettings["Environment"]</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/style.css")" />
     </head>
