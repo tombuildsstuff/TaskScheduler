@@ -44,25 +44,25 @@
     {
         Name: "Search - EU - Index Builder - Full Re-Build",
         CommandType: "HttpOperation",
-        CommandParameters: "{ Url: 'http://search-indexbuilder-ln.otenv.com/build/all', TimeoutInSeconds: "3600", Verb: 'POST' }",
+        CommandParameters: "{ Url: 'http://search-indexbuilder-ln.otenv.com/build/all', TimeoutInSeconds: '3600', Verb: 'POST' }",
         Frequency: "daily at 02:00"
     },
     {
         Name: "Search - EU  - Index Builder - Update",
         CommandType: "HttpOperation",
-        CommandParameters: "{ Url: 'http://search-indexbuilder-ln.otenv.com/update/all', TimeoutInSeconds: "1800", Verb: 'POST' }",
+        CommandParameters: "{ Url: 'http://search-indexbuilder-ln.otenv.com/update/all', TimeoutInSeconds: '1800', Verb: 'POST' }",
         Frequency: "every 30 minutes"
     },
     {
         Name: "Search - NA - Index Builder - Full Re-Build",
         CommandType: "HttpOperation",
-        CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/build/all', TimeoutInSeconds: "3600", Verb: 'POST' }",
+        CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/build/all', TimeoutInSeconds: '3600', Verb: 'POST' }",
         Frequency: "daily at 09:00"
     },
     {
         Name: "Search - NA  - Index Builder - Update",
         CommandType: "HttpOperation",
-        CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/update/all', TimeoutInSeconds: "1800", Verb: 'POST' }",
+        CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/update/all', TimeoutInSeconds: '1800', Verb: 'POST' }",
         Frequency: "every 30 minutes"
     },
     {
@@ -74,13 +74,13 @@
     {
         Name: "Search - EU - Index Builder - Full Re-Build for DinersChoice",
         CommandType: "HttpOperation",
-        CommandParameters: "{ Url: 'http://search-indexbuilder-ln.otenv.com/build/all', TimeoutInSeconds: "3600", Verb: 'POST' }",
+        CommandParameters: "{ Url: 'http://search-indexbuilder-ln.otenv.com/build/all', TimeoutInSeconds: '3600', Verb: 'POST' }",
         Frequency: "monthly on 6th at 11:00"
     },
     {
         Name: "Search - NA - Index Builder - Full Re-Build for DinersChoice",
         CommandType: "HttpOperation",
-        CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/build/all', TimeoutInSeconds: "3600", Verb: 'POST' }",
+        CommandParameters: "{ Url: 'http://search-indexbuilder-sc.otenv.com/build/all', TimeoutInSeconds: '3600', Verb: 'POST' }",
         Frequency: "monthly on 6th at 11:00"
     },
     {
