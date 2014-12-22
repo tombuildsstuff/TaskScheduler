@@ -1,8 +1,8 @@
-﻿using System.Configuration;
-using System.Net;
+﻿using System.Net;
 using System.Web.Mvc;
 using Frontend.ViewModels;
 using MongoDataAccess;
+using TaskScheduler.Configuration;
 using TaskScheduler.EventBus;
 using TaskScheduler.Events;
 using TaskScheduler.Services;
@@ -15,7 +15,7 @@ namespace Frontend.Controllers
 
         public TasksController()
         {
-            _taskMonitoringService = new TaskMonitoringService(new MongoTaskRepository(ConfigurationManager.AppSettings["MongoUrl"]));
+            _taskMonitoringService = new TaskMonitoringService(new MongoTaskRepository(new Configuration()));
         }
 
         public ActionResult Index(bool triggered = false)

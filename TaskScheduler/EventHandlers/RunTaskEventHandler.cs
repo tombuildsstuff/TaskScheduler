@@ -4,22 +4,21 @@ using TaskScheduler.Events;
 using TaskScheduler.Logging;
 using TaskScheduler.Logging.Messages;
 using TaskScheduler.Operations;
+using TaskScheduler.Repositories;
 
 namespace TaskScheduler.EventHandlers
 {
     public class RunTaskEventHandler : IEventHandler<RunTaskEvent>
     {
-        private readonly IDateTimeProvider _dateTimeProvider;
+        private readonly IDateService _dateService;
         private readonly ITaskRepository _taskRepository;
-        private readonly ITimeSpanEvaluator _timeSpanEvaluator;
         private readonly IOperationResolver _operationResolver;
         private readonly IRedisLogger _logger;
 
-        public RunTaskEventHandler(IDateTimeProvider dateTimeProvider, ITaskRepository taskRepository, ITimeSpanEvaluator timeSpanEvaluator, IOperationResolver operationResolver, IRedisLogger logger)
+        public RunTaskEventHandler(IDateService dateService, ITaskRepository taskRepository, IOperationResolver operationResolver, IRedisLogger logger)
         {
-            _dateTimeProvider = dateTimeProvider;
+            _dateService = dateService;
             _taskRepository = taskRepository;
-            _timeSpanEvaluator = timeSpanEvaluator;
             _operationResolver = operationResolver;
             _logger = logger;
         }
@@ -27,8 +26,8 @@ namespace TaskScheduler.EventHandlers
         public void Handle(RunTaskEvent @event)
         {
             var task = new TaskInfo(@event.Name, @event.Status, @event.LastRunningOn, @event.NextRunningOn, @event.TaskCommandType, @event.TaskCommandParameters, @event.Frequency, @event.ResponseStatus);
-            task.UpdateLastRunningOn(_dateTimeProvider.NowUtc);
-            task.UpdateNextRunningOn(_timeSpanEvaluator.Evaluate(_dateTimeProvider.NowUtc, task.Frequency));
+            task.UpdateLastRunningOn(_dateService.NowUtc);
+            task.UpdateNextRunningOn(_dateService.Evaluate(_dateService.NowUtc, task.Frequency));
             UpdateTaskWithStatus(task, ResponseStatus.Unknown);
 
             ResponseStatus? result = null;

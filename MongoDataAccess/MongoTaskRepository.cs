@@ -5,12 +5,16 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using TaskScheduler;
-using TaskStatus = TaskScheduler.TaskStatus;
+using TaskScheduler.Configuration;
+using TaskScheduler.Repositories;
 
 namespace MongoDataAccess
 {
     public class MongoTaskRepository : ITaskRepository
     {
+        private const string CollectionName = "TaskInformations";
+        private const string DbName = "TaskScheduler";
+
         internal class InternalTaskInfo
         {
             public ObjectId _id { get; set; }
@@ -25,19 +29,17 @@ namespace MongoDataAccess
         }
 
         private readonly string _mongoUrl;
-        private const string CollectionName = "TaskInformations";
-        private const string DbName = "TaskScheduler";
 
-        public MongoTaskRepository(string mongoUrl)
+        public MongoTaskRepository(IConfiguration configuration)
         {
-            _mongoUrl = mongoUrl;
+            _mongoUrl = configuration.Mongo.Address;
         }
 
         public TaskInfo GetTaskByName(string name)
         {
-                var collection = GetTaskCollection();
-                var info = collection.FindOne(Query<TaskInfo>.EQ(x => x.Name, name));
-                return info == null ? null : TaskInfoMapper(info);
+            var collection = GetTaskCollection();
+            var info = collection.FindOne(Query<TaskInfo>.EQ(x => x.Name, name));
+            return info == null ? null : TaskInfoMapper(info);
         }
 
         public IEnumerable<TaskInfo> GetAllTask()

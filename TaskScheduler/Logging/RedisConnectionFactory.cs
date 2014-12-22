@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using TaskScheduler.Configuration.Entities;
 
 namespace TaskScheduler.Logging
 {
@@ -16,12 +17,12 @@ namespace TaskScheduler.Logging
         private readonly int _retryTime;
         private readonly Object _connectionInitLock = new object();
 
-        public RedisConnectionFactory(IRedisConnectionWrapper connectionWrapper, string hostname, int port, int retryTime)
+        public RedisConnectionFactory(IRedisConnectionWrapper connectionWrapper, LoggerSettings settings)
         {
             _connectionWrapper = connectionWrapper;
-            _hostname = hostname;
-            _port = port;
-            _retryTime = retryTime;
+            _hostname = settings.Host;
+            _port = settings.Port;
+            _retryTime = settings.RetryTime;
             InitializeConnection();
         }
 

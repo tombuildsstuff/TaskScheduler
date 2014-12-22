@@ -1,19 +1,18 @@
 ﻿using System;
 using TaskScheduler.EventBus;
 using TaskScheduler.Events;
+using TaskScheduler.Repositories;
 
 namespace TaskScheduler.EventHandlers
 {
     public class InitializeTaskEventHandler : IEventHandler<InitializeTaskEvent>
     {
-        private readonly ITimeSpanEvaluator _timeSpanEvaluator;
-        private readonly IDateTimeProvider _dateTimeProvider;
+        private readonly IDateService _dateService;
         private readonly ITaskRepository _taskRepository;
 
-        public InitializeTaskEventHandler(ITimeSpanEvaluator timeSpanEvaluator, IDateTimeProvider dateTimeProvider, ITaskRepository taskRepository)
+        public InitializeTaskEventHandler(IDateService dateService, ITaskRepository taskRepository)
         {
-            _timeSpanEvaluator = timeSpanEvaluator;
-            _dateTimeProvider = dateTimeProvider;
+            _dateService = dateService;
             _taskRepository = taskRepository;
         }
 
@@ -26,6 +25,7 @@ namespace TaskScheduler.EventHandlers
                 configurationTask.UpdateLastRunningOn(task.LastRunningOn);
                 configurationTask.UpdateResponseStatus(task.ResponseStatus);
             }
+
             var nextTimeRunning = EvaluateNextRunningTime(@event.Frequency);
             configurationTask.UpdateNextRunningOn(nextTimeRunning);
             _taskRepository.SaveTaskInfo(configurationTask);
@@ -38,7 +38,7 @@ namespace TaskScheduler.EventHandlers
 
         private DateTime EvaluateNextRunningTime(string frequency)
         {
-            return _timeSpanEvaluator.Evaluate(_dateTimeProvider.NowUtc, frequency);
+            return _dateService.Evaluate(_dateService.NowUtc, frequency);
         }
     }
 }

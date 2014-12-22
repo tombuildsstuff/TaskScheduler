@@ -43,6 +43,7 @@
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -51,6 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\Configuration.cs" />
+    <Compile Include="Configuration\Entities\MongoSettings.cs" />
+    <Compile Include="Configuration\Entities\LoggerSettings.cs" />
+    <Compile Include="Configuration\Entities\TaskSettings.cs" />
+    <Compile Include="Configuration\IConfiguration.cs" />
     <Compile Include="ErrorEntry.cs" />
     <Compile Include="EventBus\Bus.cs" />
     <Compile Include="EventBus\EventStore\EventStoreConfiguration.cs" />
@@ -74,10 +80,10 @@
     <Compile Include="Events\InitializeTaskManagerEvent.cs" />
     <Compile Include="Events\RunTaskEvent.cs" />
     <Compile Include="Events\UpdateTaskResponseStatusEvent.cs" />
-    <Compile Include="IConfiguratinRepository.cs" />
-    <Compile Include="IDateTimeProvider.cs" />
-    <Compile Include="IErrorLogRepository.cs" />
-    <Compile Include="JSonConfigurationRepository.cs" />
+    <Compile Include="Services\Files\FileService.cs" />
+    <Compile Include="Services\Files\IFileService.cs" />
+    <Compile Include="Services\IDateService.cs" />
+    <Compile Include="Repositories\ConfigurationRepository.cs" />
     <Compile Include="Logging\Messages\LogStashLog.cs" />
     <Compile Include="Logging\Messages\TaskStatusChangedLog.cs" />
     <Compile Include="Logging\RedisConnectionFactory.cs" />
@@ -88,20 +94,20 @@
     <Compile Include="Operations\HttpOperation.cs" />
     <Compile Include="Operations\IOperation.cs" />
     <Compile Include="ITaskManager.cs" />
-    <Compile Include="ITaskRepository.cs" />
-    <Compile Include="ITimeSpanEvaluator.cs" />
+    <Compile Include="Repositories\ITaskRepository.cs" />
     <Compile Include="Operations\IOperationResolver.cs" />
     <Compile Include="Operations\OperationResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IConfigurationRepository.cs" />
+    <Compile Include="Repositories\IErrorLogRepository.cs" />
     <Compile Include="ResponseStatus.cs" />
     <Compile Include="Services\ITaskMonitoringService.cs" />
     <Compile Include="Services\TaskMonitoringService.cs" />
-    <Compile Include="StandardDateTimeProvider.cs" />
+    <Compile Include="Services\DateService.cs" />
     <Compile Include="TaskConfiguration.cs" />
     <Compile Include="TaskInfo.cs" />
     <Compile Include="TaskManager.cs" />
     <Compile Include="TaskStatus.cs" />
-    <Compile Include="TimeSpanEvaluator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

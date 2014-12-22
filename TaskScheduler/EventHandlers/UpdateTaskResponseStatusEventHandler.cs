@@ -1,6 +1,7 @@
 ﻿using System;
 using TaskScheduler.EventBus;
 using TaskScheduler.Events;
+using TaskScheduler.Repositories;
 
 namespace TaskScheduler.EventHandlers
 {

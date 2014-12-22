@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using TaskScheduler.EventBus;
 using TaskScheduler.Events;
+using TaskScheduler.Repositories;
 
 namespace TaskScheduler.EventHandlers
 {
     public class InitializeTaskManagerEventHandler : IEventHandler<InitializeTaskManagerEvent>
     {
-        private readonly IConfiguratinRepository _configurationRepository;
+        private readonly IConfigurationRepository _configurationRepository;
         private readonly ITaskRepository _taskRepository;
 
-        public InitializeTaskManagerEventHandler(IConfiguratinRepository configurationRepository, ITaskRepository taskRepository)
+        public InitializeTaskManagerEventHandler(IConfigurationRepository configurationRepository, ITaskRepository taskRepository)
         {
             _configurationRepository = configurationRepository;
             _taskRepository = taskRepository;
