@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using NSubstitute;
 using NUnit.Framework;
@@ -24,7 +23,7 @@ namespace TaskScheduler.UnitTests.EventBus
             _handler.ResetTest();
             eventHandler.RegisterInstance(() => faultyElapsedTimeHandler);
             eventHandler.RegisterInstance(() => _handler);
-            Bus.InitializeBus(eventHandler, null,redisLogger);
+            Bus.InitializeBus(eventHandler, redisLogger);
             Bus.Instance.Publish(new ElapsedTimeEvent());
             Task.WaitAll(new [] { faultyElapsedTimeHandler.Task, _handler.Task}, 1000);
         }
