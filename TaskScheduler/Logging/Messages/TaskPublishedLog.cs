@@ -14,7 +14,7 @@ namespace TaskScheduler.Logging.Messages
             get { return "Event published"; }
         }
 
-        protected override string Type
+        protected override string LogName
         {
             get { return "TaskPublishedLog"; }
         }

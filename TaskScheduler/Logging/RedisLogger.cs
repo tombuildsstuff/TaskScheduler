@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using TaskScheduler.Logging.Messages;
 
@@ -24,7 +25,8 @@ namespace TaskScheduler.Logging
         {
             try
             {
-                var settings = new JsonSerializerSettings { Converters = { new StringEnumConverter() } };
+                var settings = new JsonSerializerSettings { Converters = { new StringEnumConverter(), new IsoDateTimeConverter { DateTimeFormat = "yyyy-MM-ddTHH:mm:ss.fffZ" } } };
+                PopulateLog(log);
                 var content = JsonConvert.SerializeObject(log, settings);
                 _connectionFactory.GetConnection().AddToList(_logstashDistributionList, content);
             }
@@ -32,6 +34,12 @@ namespace TaskScheduler.Logging
             {
                 //This is just log. Don't want it to affect request path ever.                
             }
+        }
+
+        private static void PopulateLog(LogStashLog log)
+        {
+            log.Host = Environment.MachineName;
+            log.TimeStamp = DateTime.UtcNow;
         }
     }
 }

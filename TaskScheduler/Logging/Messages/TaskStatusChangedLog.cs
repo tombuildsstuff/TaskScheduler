@@ -19,7 +19,7 @@ namespace TaskScheduler.Logging.Messages
             get { return string.Format("{0} updated it's status to {1}", TaskName, Status); }
         }
 
-        protected override string Type
+        protected override string LogName
         {
             get { return "TaskStatusChangedLog"; }
         }
