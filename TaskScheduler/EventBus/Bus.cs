@@ -23,7 +23,6 @@ namespace TaskScheduler.EventBus
         {
             _redisLogger.Log(new TaskPublishedLog<T>
             {
-                Message = "Event published",
                 TypeOfEvent = typeof(T),
                 Event = @event
             });

@@ -9,6 +9,11 @@ namespace TaskScheduler.Logging.Messages
 
         public Type TypeOfEvent { get; set; }
 
+        public override string Message
+        {
+            get { return "Event published"; }
+        }
+
         protected override string Type
         {
             get { return "TaskPublishedLog"; }

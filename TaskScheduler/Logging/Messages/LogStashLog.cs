@@ -7,7 +7,7 @@
             get { return string.Format("TaskScheduler-{0}-{1}", Type, Version).ToLower(); }
         }
 
-        public string Message { get; set; }
+        public abstract string Message { get; }
 
         protected abstract string Type { get; }
 

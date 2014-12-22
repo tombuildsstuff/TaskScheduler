@@ -12,6 +12,11 @@
 
         public string TaskName { get; set; }
 
+        public override string Message
+        {
+            get { return string.Format("{0} updated it's status to {1}", TaskName, Status); }
+        }
+
         protected override string Type
         {
             get { return "TaskStatusChangedLog"; }

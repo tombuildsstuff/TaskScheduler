@@ -4,7 +4,6 @@ using System.IO;
 using MongoDataAccess;
 using TaskScheduler;
 using TaskScheduler.EventBus;
-using TaskScheduler.EventBus.EventStore;
 using TaskScheduler.EventHandlers;
 using TaskScheduler.Logging;
 using TaskScheduler.Operations;
