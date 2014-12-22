@@ -6,6 +6,7 @@ using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using TaskScheduler;
 using TaskScheduler.Configuration;
+using TaskScheduler.Entities;
 using TaskScheduler.Repositories;
 
 namespace MongoDataAccess

@@ -1,4 +1,4 @@
-﻿namespace TaskScheduler
+﻿namespace TaskScheduler.Entities
 {
     public enum ResponseStatus
     {

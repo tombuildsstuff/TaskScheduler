@@ -1,4 +1,5 @@
 ﻿using System;
+using TaskScheduler.Entities;
 using TaskScheduler.EventBus;
 
 namespace TaskScheduler.Events

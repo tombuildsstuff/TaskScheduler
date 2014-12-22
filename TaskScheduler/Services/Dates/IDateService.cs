@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TaskScheduler
+namespace TaskScheduler.Services.Dates
 {
     public interface IDateService
     {

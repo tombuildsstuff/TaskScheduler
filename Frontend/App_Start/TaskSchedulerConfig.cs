@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.IO;
 using TaskScheduler;
+using TaskScheduler.Managers;
 using TaskScheduler.Operations;
 
 namespace Frontend.App_Start

@@ -1,4 +1,6 @@
-﻿namespace TaskScheduler.Logging.Messages
+﻿using TaskScheduler.Entities;
+
+namespace TaskScheduler.Logging.Messages
 {
     public class TaskStatusChangedLog : LogStashLog
     {

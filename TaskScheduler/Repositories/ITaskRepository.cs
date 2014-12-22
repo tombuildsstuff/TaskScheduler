@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TaskScheduler.Entities;
 
 namespace TaskScheduler.Repositories
 {

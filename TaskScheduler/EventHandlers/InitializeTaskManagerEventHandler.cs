@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TaskScheduler.Entities;
 using TaskScheduler.EventBus;
 using TaskScheduler.Events;
 using TaskScheduler.Repositories;

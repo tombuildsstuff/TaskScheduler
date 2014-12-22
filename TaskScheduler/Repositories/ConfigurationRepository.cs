@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using TaskScheduler.Configuration;
+using TaskScheduler.Entities;
 using TaskScheduler.Services.Files;
 
 namespace TaskScheduler.Repositories

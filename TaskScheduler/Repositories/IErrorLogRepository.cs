@@ -1,4 +1,6 @@
-﻿namespace TaskScheduler.Repositories
+﻿using TaskScheduler.Entities;
+
+namespace TaskScheduler.Repositories
 {
     public interface IErrorLogRepository
     {

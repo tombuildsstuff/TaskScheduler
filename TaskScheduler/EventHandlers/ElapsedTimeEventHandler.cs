@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using TaskScheduler.EventBus;
 using TaskScheduler.Events;
 using TaskScheduler.Repositories;
+using TaskScheduler.Services.Dates;
+using TaskStatus = TaskScheduler.Entities.TaskStatus;
 
 namespace TaskScheduler.EventHandlers
 {

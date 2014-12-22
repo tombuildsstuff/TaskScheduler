@@ -6,6 +6,7 @@ using TaskScheduler.Configuration;
 using TaskScheduler.EventBus;
 using TaskScheduler.Events;
 using TaskScheduler.Services;
+using TaskScheduler.Services.Tasks;
 
 namespace Frontend.Controllers
 {

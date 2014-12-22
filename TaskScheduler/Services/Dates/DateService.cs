@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace TaskScheduler.Services
+namespace TaskScheduler.Services.Dates
 {
     public class DateService : IDateService
     {

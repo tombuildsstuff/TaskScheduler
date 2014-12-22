@@ -1,4 +1,6 @@
-﻿namespace TaskScheduler.Operations
+﻿using TaskScheduler.Entities;
+
+namespace TaskScheduler.Operations
 {
     public interface IOperation
     {

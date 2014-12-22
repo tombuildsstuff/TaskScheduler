@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TaskScheduler;
+using TaskScheduler.Entities;
 
 namespace Frontend.ViewModels
 {

@@ -1,7 +1,9 @@
 ﻿using System;
+using TaskScheduler.Entities;
 using TaskScheduler.EventBus;
 using TaskScheduler.Events;
 using TaskScheduler.Repositories;
+using TaskScheduler.Services.Dates;
 
 namespace TaskScheduler.EventHandlers
 {

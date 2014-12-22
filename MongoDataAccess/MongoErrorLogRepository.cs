@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using TaskScheduler;
 using TaskScheduler.Configuration;
+using TaskScheduler.Entities;
 using TaskScheduler.Repositories;
 
 namespace MongoDataAccess
