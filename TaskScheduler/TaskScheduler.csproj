@@ -80,6 +80,7 @@
     <Compile Include="IErrorLogRepository.cs" />
     <Compile Include="JSonConfigurationRepository.cs" />
     <Compile Include="Logging\Messages\LogStashLog.cs" />
+    <Compile Include="Logging\Messages\TaskStatusChangedLog.cs" />
     <Compile Include="Logging\RedisConnectionFactory.cs" />
     <Compile Include="Logging\RedisConnectionWrapper.cs" />
     <Compile Include="Logging\RedisLogger.cs" />
