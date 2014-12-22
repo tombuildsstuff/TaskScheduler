@@ -3,13 +3,18 @@ using System.Threading;
 
 namespace TaskScheduler.Logging
 {
+    public interface IRedisConnectionFactory
+    {
+        IRedisConnectionWrapper GetConnection();
+    }
+
     public class RedisConnectionFactory : IRedisConnectionFactory
     {
         private readonly IRedisConnectionWrapper _connectionWrapper;
         private readonly string _hostname;
         private readonly int _port;
         private readonly int _retryTime;
-        private Object connectionInitLock = new object();
+        private readonly Object _connectionInitLock = new object();
 
         public RedisConnectionFactory(IRedisConnectionWrapper connectionWrapper, string hostname, int port, int retryTime)
         {
@@ -20,22 +25,19 @@ namespace TaskScheduler.Logging
             InitializeConnection();
         }
 
-        private void InitializeConnection()
-        {
-            _connectionWrapper.OpenConnection(_hostname, _port);
-        }
-
         public IRedisConnectionWrapper GetConnection()
         {
             if (!_connectionWrapper.IsOpen())
                 TryInitializeConnection();
+
             return _connectionWrapper;
         }
 
         private void TryInitializeConnection()
         {
-            if (!Monitor.TryEnter(connectionInitLock))
+            if (!Monitor.TryEnter(_connectionInitLock))
                 return;
+
             try
             {
                 Thread.Sleep(_retryTime);
@@ -43,8 +45,13 @@ namespace TaskScheduler.Logging
             }
             finally
             {
-                Monitor.Exit(connectionInitLock);
+                Monitor.Exit(_connectionInitLock);
             }
+        }
+
+        private void InitializeConnection()
+        {
+            _connectionWrapper.OpenConnection(_hostname, _port);
         }
     }
 }

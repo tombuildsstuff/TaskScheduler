@@ -1,8 +1,14 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using TaskScheduler.Logging.Messages;
 
 namespace TaskScheduler.Logging
 {
+    public interface IRedisLogger
+    {
+        void Log<T>(T log) where T : LogStashLog;
+    }
+
     public class RedisLogger : IRedisLogger
     {
         private readonly IRedisConnectionFactory _connectionFactory;
@@ -18,19 +24,14 @@ namespace TaskScheduler.Logging
         {
             try
             {
-                _connectionFactory.GetConnection()
-                                  .AddToList(_logstashDistributionList,
-                                             JsonConvert.SerializeObject(log,
-                                                                         new JsonSerializerSettings
-                                                                         {
-                                                                             Converters = {new StringEnumConverter()}
-                                                                         }));
+                var settings = new JsonSerializerSettings { Converters = { new StringEnumConverter() } };
+                var content = JsonConvert.SerializeObject(log, settings);
+                _connectionFactory.GetConnection().AddToList(_logstashDistributionList, content);
             }
             catch
             {
                 //This is just log. Don't want it to affect request path ever.                
             }
         }
-
     }
 }

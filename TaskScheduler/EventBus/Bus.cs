@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using TaskScheduler.EventBus.EventStore;
 using TaskScheduler.Events;
 using TaskScheduler.Logging;
+using TaskScheduler.Logging.Messages;
 
 namespace TaskScheduler.EventBus
 {

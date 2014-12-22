@@ -3,6 +3,15 @@ using BookSleeve;
 
 namespace TaskScheduler.Logging
 {
+    public interface IRedisConnectionWrapper
+    {
+        Task<long> AddToList(string listName, string content);
+
+        bool IsOpen();
+
+        void OpenConnection(string hostname, int port);
+    }
+
     public class RedisConnectionWrapper : IRedisConnectionWrapper
     {
         private RedisConnection _connection = null;
