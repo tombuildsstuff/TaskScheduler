@@ -1,4 +1,5 @@
-﻿using TaskScheduler.EventBus;
+﻿using System;
+using TaskScheduler.EventBus;
 using TaskScheduler.Events;
 
 namespace TaskScheduler.EventHandlers
@@ -15,22 +16,20 @@ namespace TaskScheduler.EventHandlers
         public void Handle(UpdateTaskResponseStatusEvent @event)
         {
             var task = _repository.GetTaskByName(@event.TaskName);
-            if (task == null) return;
+            if (task == null)
+                return;
             task.UpdateResponseStatus(ConvertStringToStatus(@event.TaskStatus));
             _repository.SaveTaskInfo(task);
         }
 
         private static ResponseStatus ConvertStringToStatus(string taskStatus)
         {
-            switch (taskStatus.ToLower())
-            {
-                case "started":
-                    return ResponseStatus.Started;
-                case "finished":
-                    return ResponseStatus.Finished;
-                default:
-                    return ResponseStatus.Unknown;
-            }
+            ResponseStatus status;
+
+            if (Enum.TryParse(taskStatus, true, out status))
+                return status;
+
+            return ResponseStatus.Unknown;
         }
     }
 }

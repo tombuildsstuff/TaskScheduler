@@ -1,6 +1,8 @@
 ﻿using System;
 using TaskScheduler.EventBus;
 using TaskScheduler.Events;
+using TaskScheduler.Logging;
+using TaskScheduler.Logging.Messages;
 using TaskScheduler.Operations;
 
 namespace TaskScheduler.EventHandlers
@@ -11,13 +13,15 @@ namespace TaskScheduler.EventHandlers
         private readonly ITaskRepository _taskRepository;
         private readonly ITimeSpanEvaluator _timeSpanEvaluator;
         private readonly IOperationResolver _operationResolver;
+        private readonly IRedisLogger _logger;
 
-        public RunTaskEventHandler(IDateTimeProvider dateTimeProvider, ITaskRepository taskRepository, ITimeSpanEvaluator timeSpanEvaluator, IOperationResolver operationResolver)
+        public RunTaskEventHandler(IDateTimeProvider dateTimeProvider, ITaskRepository taskRepository, ITimeSpanEvaluator timeSpanEvaluator, IOperationResolver operationResolver, IRedisLogger logger)
         {
             _dateTimeProvider = dateTimeProvider;
             _taskRepository = taskRepository;
             _timeSpanEvaluator = timeSpanEvaluator;
             _operationResolver = operationResolver;
+            _logger = logger;
         }
 
         public void Handle(RunTaskEvent @event)
@@ -41,10 +45,11 @@ namespace TaskScheduler.EventHandlers
             }
         }
 
-        private void UpdateTaskWithStatus(TaskInfo task, ResponseStatus started)
+        private void UpdateTaskWithStatus(TaskInfo task, ResponseStatus status)
         {
-            task.UpdateResponseStatus(started);
+            task.UpdateResponseStatus(status);
             _taskRepository.SaveTaskInfo(task);
+            _logger.Log(new TaskStatusChangedLog(task.Name, status));
         }
 
         private ResponseStatus RunTask(TaskInfo info)

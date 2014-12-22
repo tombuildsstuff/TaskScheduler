@@ -8,7 +8,7 @@ namespace TaskScheduler.Operations
 
         public OperationResolver()
         {
-            _operationList = new Dictionary<string, IOperation>()
+            _operationList = new Dictionary<string, IOperation>
             {
                 {"HttpOperation", new HttpOperation()}
             };

@@ -25,19 +25,27 @@ namespace Frontend
             var eventStoreUserName = ConfigurationManager.AppSettings["EventStoreUserName"];
             var eventStorePassword = ConfigurationManager.AppSettings["EventStorePassword"];
             var useEventStore = bool.Parse(ConfigurationManager.AppSettings["UseEventStore"]);
-            var redisIp = ConfigurationManager.AppSettings["RedisIp"];
-            var redisPort = int.Parse(ConfigurationManager.AppSettings["RedisPort"]);
-            var redisMaxRetries = int.Parse(ConfigurationManager.AppSettings["RedisMaxRetries"]);
+
+            var logger = GetLogger();
+
             eventHandler.RegisterInstance(() => new UpdateTaskResponseStatusEventHandler(mongoTaskRepository));
-            eventHandler.RegisterInstance(() => new RunTaskEventHandler(new StandardDateTimeProvider(), mongoTaskRepository, new TimeSpanEvaluator(),
-                new OperationResolver()));
+            eventHandler.RegisterInstance(() => new RunTaskEventHandler(new StandardDateTimeProvider(), mongoTaskRepository, new TimeSpanEvaluator(), new OperationResolver(), logger));
             eventHandler.RegisterInstance(() => new ElapsedTimeEventHandler(mongoTaskRepository, new StandardDateTimeProvider()));
             eventHandler.RegisterInstance(() => new InitializeTaskEventHandler(new TimeSpanEvaluator(), new StandardDateTimeProvider(), mongoTaskRepository));
             eventHandler.RegisterInstance(() => new InitializeTaskManagerEventHandler(new JSonConfigurationRepository(config), mongoTaskRepository));
             eventHandler.RegisterInstance(() => new ErrorThrownEventHandler(new MongoErrorLogRepository(mongourl)));
             Bus.InitializeBus(eventHandler, useEventStore 
                 ? new EventStoreRepository(new EventStoreConfiguration(eventStoreIp,eventStorePort,eventStoreUserName,eventStorePassword))
-                : null, new RedisLogger(new RedisConnectionFactory(new RedisConnectionWrapper(), redisIp,redisPort, redisMaxRetries), "logstash"));
+                : null, logger);
+        }
+
+        private static IRedisLogger GetLogger()
+        {
+            var redisIp = ConfigurationManager.AppSettings["RedisIp"];
+            var redisPort = int.Parse(ConfigurationManager.AppSettings["RedisPort"]);
+            var redisMaxRetries = int.Parse(ConfigurationManager.AppSettings["RedisMaxRetries"]);
+            var logger = new RedisLogger(new RedisConnectionFactory(new RedisConnectionWrapper(), redisIp, redisPort, redisMaxRetries), "logstash");
+            return logger;
         }
     }
 }

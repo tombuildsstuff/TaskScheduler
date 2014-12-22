@@ -70,7 +70,6 @@
     <Compile Include="EventHandlers\UpdateTaskResponseStatusEventHandler.cs" />
     <Compile Include="Events\ElapsedTimeEvent.cs" />
     <Compile Include="Events\ErrorThrownEvent.cs" />
-    <Compile Include="Events\ExceptionRaisedEvent.cs" />
     <Compile Include="Events\InitializeTaskEvent.cs" />
     <Compile Include="Events\InitializeTaskManagerEvent.cs" />
     <Compile Include="Events\RunTaskEvent.cs" />
