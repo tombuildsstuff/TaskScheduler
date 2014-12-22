@@ -110,6 +110,7 @@
     <Content Include="Configuration\production\TaskSchedulerConfiguration.json" />
     <Content Include="Configuration\pre-prod\TaskSchedulerConfiguration.json" />
     <Content Include="Configuration\CI\TaskSchedulerConfiguration.json" />
+    <Content Include="DefaultProxy.config" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -139,9 +140,7 @@
     </Content>
     <Content Include="Views\Tasks\_TasksTable.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Project_Readme.html" />
   </ItemGroup>
