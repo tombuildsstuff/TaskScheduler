@@ -9,10 +9,14 @@ namespace TaskScheduler.Services.Dates
         {
             var monthlyRegex = new Regex(@"(monthly on) (\d+)(.+) at (\d+):(\d+)", RegexOptions.IgnoreCase);
             var result = monthlyRegex.Match(utcRunningTime);
-            if (result.Success) return ParseMonthlyEvent(utcNow, result);
+            if (result.Success)
+                return ParseMonthlyEvent(utcNow, result);
+
             var dailyRegex = new Regex(@"(daily at) (\d+):(\d+)", RegexOptions.IgnoreCase);
             result = dailyRegex.Match(utcRunningTime);
-            if (result.Success) return ParseDailyEvent(utcNow, result);
+            if (result.Success)
+                return ParseDailyEvent(utcNow, result);
+
             var everyRegex = new Regex(@"(every) (\d+) (minutes?|hours?)", RegexOptions.IgnoreCase);
             result = everyRegex.Match(utcRunningTime);
             return ParseEveryEvent(utcNow, result);
